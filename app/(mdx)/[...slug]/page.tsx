@@ -33,8 +33,6 @@ export async function generateStaticParams() {
             .split(path.sep).join('/')
     ])).flat();
 
-    console.log("slugs", slugs);
-
     return slugs.map(slug => ({
         slug: slug.split('/')
     }));
@@ -42,13 +40,13 @@ export async function generateStaticParams() {
 
 
 export async function generateMetadata({ params }: {
-    params: Promise<{ slug: string[] }>
+    params: Promise<{ slug: string[] | string }>
 }): Promise<Metadata> {
     try {
         let { slug } = await params;
 
         if (typeof slug === 'string') {
-            slug = slug.split('/');
+            slug = (slug as string).split('/');
         }
 
         slug = slug.join('/');
@@ -93,15 +91,13 @@ export async function generateMetadata({ params }: {
 }
 
 export default async function Page({ params }: {
-    params: Promise<{ slug: string[] }>
+    params: Promise<{ slug: string[] | string }>
 }) {
     try {
         let { slug } = await params;
 
-        console.log("slug", slug);
-
         if (typeof slug === 'string') {
-            slug = slug.split('/');
+            slug = (slug as string).split('/');
         }
 
         slug = slug.join('/');
