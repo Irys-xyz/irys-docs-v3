@@ -3,7 +3,8 @@ import NavigationAccordion from "@/components/navigation-accordion";
 
 // Add this at the top level of the file, outside the component
 async function getNavigation() {
-  const response = await fetch(`https://${process.env.VERCEL_URL}/api/navigation`, {
+  const http = process.env.NEXT_PUBLIC_VERCEL_ENV === 'production' ? 'https' : 'http';
+  const response = await fetch(`${http}://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/navigation`, {
     next: { revalidate: 3600 } // Cache for 1 hour
   });
   return response.json();

@@ -26,14 +26,18 @@ export async function generateStaticParams() {
     const contentDir = path.join(process.cwd(), 'app/_content');
     const allFiles = await getAllMdxFiles(contentDir);
 
-    const slugs = allFiles.map(file => ({
-        slug: file
-            .replace(contentDir + path.sep, '') // Remove base path
-            .replace('.mdx', '')                // Remove extension
-            .split(path.sep)                    // Split into path segments
-    }));
+    const slugs = allFiles.map(file => ([
+        file
+            .replace(contentDir + path.sep, '')
+            .replace('.mdx', '')
+            .split(path.sep).join('/')
+    ])).flat();
 
-    return slugs;
+    console.log("slugs", slugs);
+
+    return slugs.map(slug => ({
+        slug: slug.split('/')
+    }));
 }
 
 
@@ -41,8 +45,13 @@ export async function generateMetadata({ params }: {
     params: Promise<{ slug: string[] }>
 }): Promise<Metadata> {
     try {
-        const allParams = await params;
-        const slug = allParams.slug.join('/');
+        let { slug } = await params;
+
+        if (typeof slug === 'string') {
+            slug = slug.split('/');
+        }
+
+        slug = slug.join('/');
 
         if (!slug) {
             return {
@@ -87,8 +96,15 @@ export default async function Page({ params }: {
     params: Promise<{ slug: string[] }>
 }) {
     try {
-        const allParams = await params;
-        const slug = allParams.slug.join('/');
+        let { slug } = await params;
+
+        console.log("slug", slug);
+
+        if (typeof slug === 'string') {
+            slug = slug.split('/');
+        }
+
+        slug = slug.join('/');
 
         if (!slug) {
             return notFound();
