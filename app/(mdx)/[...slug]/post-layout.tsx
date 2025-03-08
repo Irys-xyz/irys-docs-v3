@@ -1,14 +1,7 @@
 import TopNav from "@/components/top-nav";
 import NavigationAccordion from "@/components/navigation-accordion";
+import { getNavigation } from '@/actions/navigation';
 
-// Add this at the top level of the file, outside the component
-async function getNavigation() {
-  const http = process.env.NEXT_PUBLIC_VERCEL_ENV === 'production' ? 'https' : 'http';
-  const response = await fetch(`${http}://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/navigation`, {
-    next: { revalidate: 3600 } // Cache for 1 hour
-  });
-  return response.json();
-}
 
 export default async function Home({ children }: { children: React.ReactNode, frontmatter: Record<string, string> }) {
   const navigation = await getNavigation();
