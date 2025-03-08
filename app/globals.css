@@ -2,20 +2,420 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@plugin 'tailwind-scrollbar';
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-grey5 text-white;
 }
 
-@media (prefers-color-scheme: dark) {
+a {
+  @apply !text-white;
+}
+
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --radius: 0.5rem;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.debug {
+  @apply border border-red-500;
 }
+
+.hash-link {
+  @apply !text-grey2 no-underline;
+
+}
+
+.hash-link::after {
+  content: '#';
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+  @apply text-grey3 pl-2 group-hover:opacity-100;
+}
+
+.hash-link:hover::after {
+  opacity: 1;
+}
+
+/* .nextra-code span {
+  @apply bg-grey2 !text-white;
+}
+
+code.nextra-code {
+  box-decoration-break: slice;
+  @apply !text-white;
+  font-feature-settings:
+    'rlig' 1,
+    'calt' 1,
+    'ss01' 1;
+  @apply text-sm;
+
+  :not(pre)>&:not([class*='twoslash-']) {
+    @apply border-black/[0.04] bg-black/[0.03] break-words rounded-md border py-0.5 px-[.25em] text-[.9em];
+    @apply dark:border-white/10 dark:bg-white/10;
+  }
+}
+
+pre code.nextra-code:not([class*='twoslash-']) {
+  @apply grid;
+  counter-reset: line;
+
+  &[data-line-numbers]>span {
+    @apply pl-2 text-white;
+
+    &::before {
+      counter-increment: line;
+      content: counter(line);
+      @apply inline-block pr-4 text-right min-w-[2.6rem] text-gray-500;
+    }
+  }
+
+  &>span {
+    @apply px-4;
+
+    &[data-highlighted-line] {
+      @apply bg-grey2 dark:bg-red-500 text-red-500 shadow-[2px_0_currentColor_inset];
+    }
+
+    [data-highlighted-chars] {
+      @apply rounded-sm ring-2 ring-grey2 dark:ring-grey2;
+      @apply bg-grey2 dark:bg-grey2;
+    }
+  }
+
+  html[data-nextra-word-wrap] & {
+    @apply max-md:whitespace-pre-wrap;
+  }
+} */
+
+/* .nextra-code {
+  @apply !text-black bg-grey2 p-1 rounded;
+  font-family: inherit;
+  quotes: none;
+}
+
+.nextra-code::before,
+.nextra-code::after {
+  content: none;
+} */
+
+.opblock-section-header {
+  @apply !bg-[#111111];
+}
+
+/* Light Mode */
+.light .swagger-ui .topbar {
+  @apply !bg-[#111111];
+}
+.light .swagger-ui .btn {
+  background-color: #ff8451;
+  color: #ffffff;
+}
+.light .swagger-ui .info,
+.light .swagger-ui .opblock-description,
+.light .swagger-ui .responses-inner h4,
+.light .swagger-ui .parameter__name,
+.light .swagger-ui .response .response-col_description,
+.light .swagger-ui .opblock-summary-method,
+.light .swagger-ui .opblock-summary-path {
+  color: #000000;
+}
+
+/* Hack. I actually want to remove this with a custom renderer, but can't figure out how - Luke */
+.light .swagger-ui .opblock-tag {
+  display: none;
+}
+
+.swagger-ui .opblock-summary-operation-id {
+  display: none !important;
+}
+
+/* Hack. I actually want to remove this with a custom renderer, but can't figure out how - Luke */
+.dark .swagger-ui .opblock-tag {
+  display: none;
+}
+
+/* Dark Mode */
+.dark .swagger-ui .topbar {
+  background-color: #1f2937;
+}
+.dark .swagger-ui .btn {
+  background-color: #ff8451;
+  color: #ffffff;
+}
+.dark .swagger-ui .info,
+.dark .swagger-ui .opblock-description,
+.dark .swagger-ui .responses-inner h4,
+.dark .swagger-ui .parameter__name,
+.dark .swagger-ui .response .response-col_description,
+.dark .swagger-ui .opblock-summary-method,
+.dark .swagger-ui .opblock-summary-path,
+.dark .swagger-ui .col_header .parameters-col_description {
+  color: #ffffff;
+}
+
+#__next
+  > div
+  > div.nx-mx-auto.nx-flex.nx-max-w-\[90rem\]
+  > article
+  > main
+  > div.nx-mb-8.nx-flex.nx-items-center.nx-border-t.nx-pt-8.dark\:nx-border-neutral-800.contrast-more\:nx-border-neutral-400.dark\:contrast-more\:nx-border-neutral-400.print\:nx-hidden
+  > a.nx-flex.nx-max-w-\[50\%\].nx-items-center.nx-gap-1.nx-py-4.nx-text-base.nx-font-medium.nx-text-gray-600.nx-transition-colors.\[word-break\:break-word\].hover\:nx-text-primary-600.dark\:nx-text-gray-300.md\:nx-text-lg.ltr\:nx-ml-auto.ltr\:nx-pl-4.ltr\:nx-text-right.rtl\:nx-mr-auto.rtl\:nx-pr-4.rtl\:nx-text-left {
+  @apply bg-[#090909] p-4 !text-white;
+}
+
+#__next
+  > div
+  > div.nx-mx-auto.nx-flex.nx-max-w-\[90rem\]
+  > article
+  > main
+  > div.nx-mb-8.nx-flex.nx-items-center.nx-border-t.nx-pt-8.dark\:nx-border-neutral-800.contrast-more\:nx-border-neutral-400.dark\:contrast-more\:nx-border-neutral-400.print\:nx-hidden
+  > a.nx-flex.nx-max-w-\[50\%\].nx-items-center.nx-gap-1.nx-py-4.nx-text-base.nx-font-medium.nx-text-gray-600.nx-transition-colors.\[word-break\:break-word\].hover\:nx-text-primary-600.dark\:nx-text-gray-300.md\:nx-text-lg.ltr\:nx-pr-4.rtl\:nx-pl-4 {
+  @apply bg-[#090909] p-4 !text-white;
+}
+
+#__next
+  > div
+  > div.nx-mx-auto.nx-flex.nx-max-w-\[90rem\]
+  > aside
+  > div.nx-overflow-y-auto.nx-overflow-x-hidden.nx-p-4.nx-grow.md\:nx-h-\[calc\(100vh-var\(--nextra-navbar-height\)-var\(--nextra-menu-height\)\)\].nextra-scrollbar
+  > div
+  > div
+  > ul
+  > li
+  > button {
+  @apply !text-white !font-semibold;
+}
+
+#__next
+  > div
+  > div.nx-mx-auto.nx-flex.nx-max-w-\[90rem\]
+  > aside
+  > div.nx-overflow-y-auto.nx-overflow-x-hidden.nx-p-4.nx-grow.md\:nx-h-\[calc\(100vh-var\(--nextra-navbar-height\)-var\(--nextra-menu-height\)\)\].nextra-scrollbar
+  > div
+  > div
+  > ul
+  > li.nx-flex.nx-flex-col.nx-gap-1
+  > a {
+  @apply !text-white !font-semibold;
+}
+
+:is(html[class~="dark"] .dark\:nx-shadow-\[0_-12px_16px_\#111\]) {
+  @apply !shadow-none;
+}
+
+#__next > div > div.nx-mx-auto.nx-flex.nx-max-w-\[90rem\] > nav > div > p {
+  @apply !text-black dark:!text-white;
+}
+
+#__next
+  > div
+  > div.nx-mx-auto.nx-flex.nx-max-w-\[90rem\]
+  > aside
+  > div.nx-sticky.nx-bottom-0.nx-bg-white.dark\:nx-bg-dark.nx-mx-4.nx-py-4.nx-shadow-\[0_-12px_16px_\#fff\].nx-flex.nx-items-center.nx-gap-2.dark\:nx-border-neutral-800.dark\:nx-shadow-\[0_-12px_16px_\#111\].contrast-more\:nx-border-neutral-400.contrast-more\:nx-shadow-none.contrast-more\:dark\:nx-shadow-none.nx-border-t {
+  @apply hidden;
+}
+
+:is(html[class~="dark"] .dark\:nx-bg-primary-300\/10) {
+  background-color: hsl(0deg 0% 5.1%);
+}
+
+pre {
+  @apply !bg-[#0d0d0d] !text-base;
+}
+
+pre > * {
+  @apply !leading-relaxed;
+}
+
+.nx-bg-primary-100 {
+  @apply !bg-[#101010] !text-[#BABABA];
+}
+
+main > * > a {
+  @apply !text-white;
+}
+
+:is([dir="ltr"] .ltr\:nx-pl-3) {
+  padding-left: 0.75rem;
+}
+
+#__next
+  > div
+  > div.nx-mx-auto.nx-flex.nx-max-w-\[90rem\]
+  > aside
+  > div.nx-overflow-y-auto.nx-overflow-x-hidden.nx-p-4.nx-grow.md\:nx-h-\[calc\(100vh-var\(--nextra-navbar-height\)-var\(--nextra-menu-height\)\)\].nextra-scrollbar
+  > div
+  > div
+  > ul
+  > li.open
+  > div
+  > div
+  > ul {
+  @apply !pl-0 !ml-0;
+}
+.before\:nx-bg-gray-200:before {
+  @apply !bg-transparent;
+}
+
+.hide-try-it-out .try-out__btn {
+  display: none !important;
+}
+
+.opblock-tag > a > span {
+  @apply !font-skrappaNarrow !text-3xl !-ml-2;
+}
+
+div.no-margin > div > div.opblock-section > div.opblock-section-header > div.try-out > button {
+  @apply !bg-primary-green !text-black border-0;
+}
+
+#operations-tag-account > button {
+  @apply !fill-white;
+}
+
+/* remove padding from the side menu list items */
+div
+  > div.nx-mx-auto.nx-flex.nx-max-w-\[90rem\]
+  > aside
+  > div
+  > div
+  > div
+  > ul
+  > li
+  > div
+  > div
+  > ul
+  > li
+  > a {
+  /* @apply px-2 py-2 flex items-center; */
+  @apply !p-0;
+}
+
+/* REST API CUSTOM CSS */
+.opblock {
+  font-family: "Satoshi", sans-serif;
+}
+
+.opblock-body {
+  @apply bg-[#141414];
+}
+
+.opblock-title {
+  @apply !text-white;
+}
+
+.parameters-container > .opblock-description-wrapper > p {
+  @apply text-[#AEAEAE];
+}
+
+.responses-wrapper > .opblock-section-header > h4 {
+  @apply !text-[#FFFFFF];
+}
+
+.col_header.response-col_status {
+  @apply !text-[#AEAEAE];
+}
+
+.col_header.response-col_description {
+  @apply text-[#FEFEFE];
+}
+
+.col.col_header.response-col_links {
+  @apply text-[#AEAEAE];
+}
+
+.response-col_status {
+  @apply !text-[#AEAEAE];
+}
+
+.response-col_description__inner {
+  @apply text-white;
+}
+
+.response-col_links {
+  @apply !text-[#AEAEAE];
+}
+
+.col_header.parameters-col_name {
+  @apply text-[#AEAEAE];
+}
+
+.col_header.parameters-col_description {
+  @apply text-white;
+}
+
+.parameter__type {
+  @apply !text-[#AEAEAE];
+}
+
+.parameter__in {
+  @apply !text-[#535353];
+}
+
+.opblock-description-wrapper {
+  @apply !text-white;
+}
+
+.opblock.opblock-get,
+.opblock.opblock-post,
+.opblock.opblock-head {
+  @apply !border !border-[#262626] !rounded-lg;
+}
+
+.opblock-summary.opblock-summary-get,
+.opblock-summary.opblock-summary-post,
+.opblock-summary.opblock-summary-head {
+  @apply bg-[#202020] !rounded-lg !overflow-hidden;
+}
+
+.opblock-post > div > button.opblock-summary-control > div > span > a > span {
+  @apply !text-[#91BB9D] font-normal;
+}
+
+.opblock-head > div > button.opblock-summary-control > div > span > a > span {
+  @apply !text-[#D8A4FF] font-normal;
+}
+
+.opblock-get > div > button.opblock-summary-control > div > span > a > span {
+  @apply !text-[#91A2BB] font-normal;
+}
+
+.opblock-get > div > button.opblock-summary-control > span.opblock-summary-method {
+  font-family: "Satoshi", sans-serif;
+  @apply !border !border-[#4A89E7] !rounded-lg !bg-[#4A89E714] !text-[#4A89E7];
+}
+
+.opblock-post > div > button.opblock-summary-control > span.opblock-summary-method {
+  font-family: "Satoshi", sans-serif;
+  @apply !border !border-[#3FC483] !rounded-lg !bg-[#3FC48314] !text-[#3FC483];
+}
+
+.opblock-head > div > button.opblock-summary-control > span.opblock-summary-method {
+  font-family: "Satoshi", sans-serif;
+  @apply !border !border-[#9012fe] !rounded-lg !bg-[#9012fe27] !text-[#9012fe];
+}
+
+.opblock-summary-description {
+  @apply !text-[#535353];
+}
+
+#operations-transactions-post_tx > div > button.opblock-summary-control > div > div {
+  @apply !text-[#535353];
+}
+
+.parameters input {
+  @apply placeholder:!text-[#535353] !bg-[#111111] !border-[#4D4D4D] text-white;
+}
+
+.opblock .opblock-control-arrow {
+  @apply !fill-[#AEAEAE];
+}
+
+.content-type {
+  @apply placeholder:!text-[#535353] !bg-[#111111] !border-[#4D4D4D];
+}
+
+

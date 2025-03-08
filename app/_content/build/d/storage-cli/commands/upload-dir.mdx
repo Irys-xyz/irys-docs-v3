@@ -1,0 +1,67 @@
+---
+description: Funds the node with the specified amount of tokens.
+---
+
+import Callout from "@/components/callout";
+import ApiTable from "@/components/api-table/api-table.tsx";
+
+# `upload-dir`
+
+Uploads an entire directory of files.
+
+## Parameters
+
+
+<ApiTable columns={[
+	{ header: "Option", key: "type", span: 3 },
+	{ header: "Description", key: "description", span: 9 },
+]} data={[
+	  { type: "-n", description: "The network to check, `testnet` or `devnet`, defaults to `testnet`." },
+    { type: "-t", description: "The [token](/build/d/features/supported-tokens) to use when funding." },
+    { type: "-w", description: "Your private key." },
+    { type: "--index-file", description: "Name of the file to use as an index for manifests." },
+    { type: "--provider-url", description: "RPC URL to use." },
+]}/>
+
+## Examples
+
+### Testnet
+
+```console
+irys upload-dir ./myImages \
+  -t ethereum \
+  -w bf20......c9885307 
+```
+
+### Devnet
+
+```console
+irys upload-dir ./myImages \
+  -n devnet \
+  -t ethereum \
+  -w bf20......c9885307 \
+  --provider-url https://rpc.sepolia.dev
+```
+
+<Callout type="info" emoji="ℹ️">
+	RPC URLs change often, use a recent one from https://chainlist.org/
+</Callout>
+
+## Downloading
+
+Files uploaded via `irys upload-dir` can be retrieved in one of two ways.
+
+1. Creating a URL with the format `https://gateway.irys.xyz/manifestId/:originalFileName]`.
+2. Creating a URL using the transaction ID of each individual file uploaded with the format `https://gateway.irys.xyz/:transactonId`
+
+After a successful folder upload, two files are written to your local project directory:
+
+- `[folder_name].csv`
+- `[folder_name].json`
+
+The example below highlights a folder called with a total of 5 files in it. The transaction ID for each file can be used to retrieve the uploaded data by forming a URL with the format `https://gateway.irys.xyz]/transactionId`
+
+<img
+	className="rounded-xl mt-5 md:w-5/6 w-full"
+	src="/build/img/folder-manifest.png"
+/>

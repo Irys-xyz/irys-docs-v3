@@ -1,0 +1,14 @@
+{
+	"quickstart": "Quickstart",
+	"networks": "Testnet / Devnet",
+	"features": "Features",
+	"sdk": "SDK",
+	"irys-in-the-browser": "Irys in the Browser",
+	"storage-cli": "Storage CLI",
+	"rest-api": "REST API",
+	"guides": "Guides",
+	"downloading": "Downloading",
+	"graphql": "Querying",
+	"troubleshooting": "Troubleshooting",
+	"migrating": "Migrating"
+}

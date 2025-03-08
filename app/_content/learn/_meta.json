@@ -1,0 +1,9 @@
+{
+	"what": "What",
+	"why": "Why",
+	"network-overview": "Network Overview",
+	"protocol-overview": "Protocol Overview",
+	"build-with-us": {
+		"display": "hidden"
+	}
+}

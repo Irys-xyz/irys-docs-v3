@@ -1,0 +1,7 @@
+{
+	"setup": "Installing, Importing & Configuring",
+	"payment": "Payment API",
+	"upload": "Upload API",
+	"utils": "Utility API",
+	"chunked-uploader": "Chunked Uploader"
+}
