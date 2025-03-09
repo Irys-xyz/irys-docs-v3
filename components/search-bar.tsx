@@ -29,6 +29,9 @@ export function SearchBar() {
     // Add ref for CommandList
     const commandListRef = React.useRef<HTMLDivElement>(null)
 
+    // Add debounce timeout ref
+    const searchTimeoutRef = React.useRef<NodeJS.Timeout>(null)
+
     // Add useEffect to reset scroll position
     React.useEffect(() => {
         if (commandListRef.current) {
@@ -48,17 +51,34 @@ export function SearchBar() {
     }, [])
 
     const handleSearch = async (value: string) => {
-        try {
-            const results = await search(value);
-            console.log("Search results structure:", JSON.stringify(results, null, 2));
-            console.log("Number of results:", results.length);
-            setResults(results as unknown as SearchResult[]);
-            console.log("Updated results state:", results);
-        } catch (error) {
-            console.error('Search error:', error);
-            setResults([]);
+        // Clear any existing timeout
+        if (searchTimeoutRef.current) {
+            clearTimeout(searchTimeoutRef.current)
         }
+
+        // Set a new timeout
+        searchTimeoutRef.current = setTimeout(async () => {
+            try {
+                const results = await search(value);
+                console.log("Search results structure:", JSON.stringify(results, null, 2));
+                console.log("Number of results:", results.length);
+                setResults(results as unknown as SearchResult[]);
+                console.log("Updated results state:", results);
+            } catch (error) {
+                console.error('Search error:', error);
+                setResults([]);
+            }
+        }, 300) // 300ms delay
     };
+
+    // Cleanup timeout on unmount
+    React.useEffect(() => {
+        return () => {
+            if (searchTimeoutRef.current) {
+                clearTimeout(searchTimeoutRef.current)
+            }
+        }
+    }, [])
 
     console.log("Render - current results:", results);
 
