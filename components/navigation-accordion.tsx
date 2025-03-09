@@ -41,7 +41,7 @@ type NavigationStructure = {
     build: NavItem[];
 };
 
-const iconMapping = {
+export const iconMapping = {
     "what-irys-is": IconManeki,        // Lucky cat - matches ICON_FORTUNE intent
     "what-irys-isnt": IconOniMask,     // Demon mask - matches ICON_PROXY intent
     "what-a-datachain-is": IconGraph,   // Matches specification
@@ -111,6 +111,7 @@ export default function NavigationAccordion({
     };
 
     return (
+
         <Accordion
             type="multiple"
             className="text-grey2"
@@ -120,12 +121,22 @@ export default function NavigationAccordion({
             {Object.entries(initialNavigation).map(([section, items], sectionIndex) => (
                 <div key={section}>
                     {sectionIndex === 0 && (
-                        <div className="flex flex-col h-full border-r border-grey4 sticky top-0 bg-grey4">
+                        <div className="flex flex-col h-full border-r border-grey4 sticky top-0 bg-grey4 z-10">
                             <div className="p-5 w-full border-b border-grey5 flex-shrink-0">
                                 <Title className="!text-[32px] !leading-none">
                                     Learn
                                 </Title>
                             </div>
+                        </div>
+                    )}
+                    {sectionIndex === 1 && (
+                        <div className="flex flex-col h-full border-r border-grey4 sticky top-0 bg-grey4 z-10">
+                            <div className="p-5 w-full border-b border-grey5 flex-shrink-0">
+                                <Title className="!text-[32px] !leading-none">
+                                    Build
+                                </Title>
+                            </div>
+
                         </div>
                     )}
                     {items.map((item) => {
@@ -263,16 +274,7 @@ export default function NavigationAccordion({
                             </AccordionItem>
                         );
                     })}
-                    {sectionIndex === 0 && (
-                        <div className="flex flex-col h-full border-r border-grey4 sticky top-0 bg-grey4 z-10">
-                            <div className="p-5 w-full border-b border-grey5 flex-shrink-0">
-                                <Title className="!text-[32px] !leading-none">
-                                    Build
-                                </Title>
-                            </div>
 
-                        </div>
-                    )}
                 </div>
             ))}
         </Accordion>

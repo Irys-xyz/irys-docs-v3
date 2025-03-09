@@ -19,7 +19,7 @@ const RiveIcon = (props: Props) => {
     if (props.hovered) {
       rive?.play(props.animation);
     }
-  }, [props.hovered]);
+  }, [rive, props.hovered, props.animation]);
 
   return <RiveComponent className="z-50 size-5" />;
 };
