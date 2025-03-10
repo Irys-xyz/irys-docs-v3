@@ -85,7 +85,7 @@ export function SearchBar() {
     return (
         <>
             <Button
-                className="relative w-full justify-start text-sm !bg-grey4 sm:pr-12 md:w-40 lg:w-64 text-grey2 items-center"
+                className="relative w-full justify-start text-sm !bg-grey4 md:w-96 text-grey2 items-center"
                 onClick={() => setOpen(true)}
             >
                 <Search className="mr-2 h-4 w-4" />

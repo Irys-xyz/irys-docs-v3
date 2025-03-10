@@ -36,7 +36,7 @@ type NavItem = {
     children?: NavItem[];
 };
 
-type NavigationStructure = {
+export type NavigationStructure = {
     learn: NavItem[];
     build: NavItem[];
 };
