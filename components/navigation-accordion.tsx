@@ -152,11 +152,11 @@ export default function NavigationAccordion({
                                 className="border-b border-grey5 border-solid"
                             >
                                 <AccordionTrigger className={`pl-4 pr-3 w-full h-12 ${isActive ? 'text-white' : ''}`}>
-                                    {getIcon(item.slug, typeof item.title === 'string' ? item.title : undefined) && (
+                                    {/* {getIcon(item.slug, typeof item.title === 'string' ? item.title : undefined) && (
                                         <div className="mr-2">
                                             {getIcon(item.slug, typeof item.title === 'string' ? item.title : undefined)}
                                         </div>
-                                    )}
+                                    )} */}
                                     <Paragraph size="caps" className="text-start">
                                         {typeof item.title === 'string' ? item.title : ''}
                                     </Paragraph>
@@ -178,11 +178,11 @@ export default function NavigationAccordion({
                                                     >
                                                         <AccordionTrigger className={`pl-4 pr-3 h-12 w-full ${isChildActive ? 'text-white' : ''}`}>
                                                             <div className="flex items-center">
-                                                                {getIcon(child.slug, typeof child.title === 'string' ? child.title : undefined) && (
+                                                                {/* {getIcon(child.slug, typeof child.title === 'string' ? child.title : undefined) && (
                                                                     <div className="mr-2">
                                                                         {getIcon(child.slug, typeof child.title === 'string' ? child.title : undefined)}
                                                                     </div>
-                                                                )}
+                                                                )} */}
                                                                 <Paragraph size="small" className="text-start">
                                                                     {typeof child.title === 'string' ? child.title : ''}
                                                                 </Paragraph>
@@ -202,11 +202,11 @@ export default function NavigationAccordion({
                                                                         >
                                                                             <AccordionTrigger className={`bg-[#1A1C20]/40 pl-4 pr-3 w-full ${isGreatGrandChildActive ? 'text-white' : ''}`}>
                                                                                 <div className="flex items-center">
-                                                                                    {getIcon(grandChild.slug, typeof grandChild.title === 'string' ? grandChild.title : undefined) && (
+                                                                                    {/* {getIcon(grandChild.slug, typeof grandChild.title === 'string' ? grandChild.title : undefined) && (
                                                                                         <div className="mr-2">
                                                                                             {getIcon(grandChild.slug, typeof grandChild.title === 'string' ? grandChild.title : undefined)}
                                                                                         </div>
-                                                                                    )}
+                                                                                    )} */}
                                                                                     <Paragraph size="small" className="text-start">
                                                                                         {typeof grandChild.title === 'string' ? grandChild.title : ''}
                                                                                     </Paragraph>
@@ -258,11 +258,11 @@ export default function NavigationAccordion({
                                                     className={`pl-4 pr-3 h-12 flex items-center w-full hover:text-white border-b border-grey5 border-solid hover:bg-grey5 ${isChildActive ? 'text-white bg-grey5' : ''
                                                         }`}
                                                 >
-                                                    {getIcon(child.slug, typeof child.title === 'string' ? child.title : undefined) && (
+                                                    {/* {getIcon(child.slug, typeof child.title === 'string' ? child.title : undefined) && (
                                                         <div className="mr-2">
                                                             {getIcon(child.slug, typeof child.title === 'string' ? child.title : undefined)}
                                                         </div>
-                                                    )}
+                                                    )} */}
                                                     <Paragraph className="text-start" size="small">
                                                         {typeof child.title === 'string' ? child.title : ''}
                                                     </Paragraph>
