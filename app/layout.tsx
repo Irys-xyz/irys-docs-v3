@@ -2,6 +2,8 @@ import "./globals.css";
 
 import localFont from "next/font/local";
 
+import { GoogleAnalytics } from '@next/third-parties/google'
+
 const skrappa = localFont({
   src: [
     {
@@ -47,6 +49,7 @@ export default function RootLayout({
       >
         {children}
       </body>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ""} />
     </html>
   );
 }
