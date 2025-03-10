@@ -104,11 +104,11 @@ export default function NavigationAccordion({
         return pathWithoutSection === path;
     };
 
-    const getIcon = (slug: string, title?: string) => {
-        const Icon = iconMapping[slug as keyof typeof iconMapping] ||
-            (title && iconMapping[title as keyof typeof iconMapping]);
-        return Icon ? <Icon className="w-6 h-6" /> : null;
-    };
+    // const getIcon = (slug: string, title?: string) => {
+    //     const Icon = iconMapping[slug as keyof typeof iconMapping] ||
+    //         (title && iconMapping[title as keyof typeof iconMapping]);
+    //     return Icon ? <Icon className="w-6 h-6" /> : null;
+    // };
 
     return (
 
