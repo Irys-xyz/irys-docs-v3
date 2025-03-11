@@ -1,0 +1,162 @@
+---
+description: Using the Irys SDK with create-react-app and Vite.
+---
+
+# Using Irys With React + Vite
+
+This guide covers how to set up an Irys project using React + Vite.
+
+## Step 1: Setup a New Project
+
+Create a new directory for your project, navigate into it, and initialize it with Vite:
+
+```bash
+mkdir irys-vite
+cd irys-vite
+npm create vite@latest .
+```
+
+Choose React and select either TypeScript or JavaScript.
+
+After selecting the framework, run:
+
+```bash
+npm install
+```
+
+## Step 2: Install the Irys SDK, Ethers, and Axios
+
+Install the necessary packages, including the Irys SDK, Ethers, and Axios:
+
+```bash
+npm install \
+    @irys/web-upload \
+    @irys/web-upload-ethereum \
+    @irys/web-upload-ethereum-ethers-v6 \
+    ethers@6 \
+    axios
+```
+
+## Step 3: Initialize the Irys Uploader
+
+In your App.tsx file, write an initialization function to set up an Irys uploader using Ethers v6:
+
+```tsx
+import { useState } from "react";
+import { ethers } from "ethers";
+import { WebUploader } from "@irys/web-upload";
+import { WebEthereum } from "@irys/web-upload-ethereum";
+import { EthersV6Adapter } from "@irys/web-upload-ethereum-ethers-v6";
+
+function App() {
+  const [walletStatus, setWalletStatus] = useState("Not connected");
+  const [irysStatus, setIrysStatus] = useState("Not connected");
+
+  const connectWallet = async () => {
+    console.log("connect wallet");
+
+    if (typeof window.ethereum === 'undefined') {
+      console.error("No Ethereum provider found. Please install MetaMask or another wallet.");
+      setWalletStatus("No Ethereum provider found. Please install MetaMask or another wallet.");
+      return;
+    }
+
+    try {
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      await provider.send("eth_requestAccounts", []);
+      const signer = await provider.getSigner();
+      const address = await signer.getAddress();
+      setWalletStatus(`Connected: ${address}`);
+    } catch (error) {
+      console.error("Error connecting to wallet:", error);
+      setWalletStatus("Error connecting to wallet");
+    }
+  };
+
+  const connectIrys = async () => {
+    if (typeof window.ethereum === 'undefined') {
+      console.error("No Ethereum provider found. Please install MetaMask or another wallet.");
+      setIrysStatus("No Ethereum provider found. Please install MetaMask or another wallet.");
+      return;
+    }
+
+    try {
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const irysUploader = await WebUploader(WebEthereum).withAdapter(EthersV6Adapter(provider));
+      setIrysStatus(`Connected to Irys: ${irysUploader.address}`);
+    } catch (error) {
+      console.error("Error connecting to Irys:", error);
+      setIrysStatus("Error connecting to Irys");
+    }
+  };
+
+  return (
+    <div>
+      <button onClick={connectWallet}>Connect Wallet</button>
+      <p>{walletStatus}</p>
+      <button onClick={connectIrys}>Connect Irys</button>
+      <p>{irysStatus}</p>
+    </div>
+  );
+}
+
+export default App;
+```
+
+## Step 4: Install Node Polyfills for Vite
+
+Vite does not automatically polyfill Node.js core modules like crypto, stream, os, or path. To fix compatibility issues, install the necessary polyfill packages:
+
+```bash
+npm install --save-dev \
+    crypto-browserify \
+    stream-browserify \
+    os-browserify \
+    path-browserify \
+    vite-plugin-node-polyfills
+```
+
+## Step 5: Update vite.config.js
+
+Modify your `vite.config.js` to use `vite-plugin-node-polyfills` to handle the polyfills required for Node.js core modules:
+
+```ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [
+    react(),
+    nodePolyfills({
+      // Enable polyfills for specific globals and modules
+      globals: {
+        Buffer: true,
+        global: true,
+        process: true,
+      },
+      protocolImports: true, // Polyfill node: protocol imports
+    }),
+  ],
+  resolve: {
+    alias: {
+      // Polyfill Node.js core modules
+      crypto: 'crypto-browserify',
+      stream: 'stream-browserify',
+      os: 'os-browserify/browser',
+      path: 'path-browserify',
+    },
+  },
+});
+```
+
+## Step 6: Restart Vite Development Server
+
+After making these changes, restart your development server:
+
+```bash
+npm run dev
+```
+
+Your React + Vite project should now be set up correctly to use the Irys SDK and handle all necessary Node.js polyfills.

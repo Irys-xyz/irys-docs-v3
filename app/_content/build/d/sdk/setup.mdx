@@ -1,0 +1,345 @@
+---
+description: Importing and configuring the SDK
+---
+
+import Callout from "@/components/callout";
+
+# Installing, Importing & Configuring
+
+The Irys SDK reduces dependency bloat by providing dedicated packages for each token. Your install statements, import and connection code will differ depending on the token used for payment.
+
+Select the appropriate code from the options below when starting your project.
+
+<div className="flex justify-center text-center mt-5">
+[APTOS](#aptos) |  [Arbitrum](#arbitrum) | [Avalanche C-Chain](#avalanche-c-chain) | [Berachain](#berachain) | [BNB](#bnb) | [Chainlink](#chainlink) | [Eclipse-eth](#eclipse-eth) | [Ethereum](#ethereum) | [Base Ethereum](#base-ethereum) | [Linea Ethereum](#linea-ethereum) | [Scroll Ethereum](#scroll-ethereum) | [IoTeX](#iotex) | [Polygon](#polygon) | [Solana](#solana) | [USDC (on Ethereum)](#usdc-on-ethereum) | [USDC (on Polygon)](#usdc-on-polygon)
+</div>
+
+<Callout type="info" emoji="ℹ️">
+The following code examples connect to our alpha testnet. To switch to our devnet, append the functions `withRpc()` and `devnet()` as [outlined here](/build/d/networks#connecting-to-devnet). 
+</Callout>
+
+## Aptos
+
+Installing:
+
+```console
+npm install @irys/upload @irys/upload-aptos
+```
+
+Importing & Configuring:
+
+```ts
+import { Uploader } from "@irys/upload";
+import { Aptos } from "@irys/upload-aptos";
+
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Aptos).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
+};
+```
+
+
+## Arbitrum
+
+Installing:
+
+```console
+npm install @irys/upload @irys/upload-ethereum
+```
+
+Importing & Configuring:
+
+```ts
+import { Uploader } from "@irys/upload";
+import { Arbitrum } from "@irys/upload-ethereum";
+
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Arbitrum).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
+};
+```
+
+## Avalanche C-Chain
+
+Installing:
+
+```console
+npm install @irys/upload @irys/upload-ethereum
+```
+
+Importing & Configuring:
+
+```ts
+import { Uploader } from "@irys/upload";
+import { Avalanche } from "@irys/upload-ethereum";
+
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Avalanche).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
+};
+```
+
+## Berachain
+
+Installing:
+
+```console
+npm install @irys/upload @irys/upload-ethereum
+```
+
+Importing & Configuring:
+
+```ts
+import { Uploader } from "@irys/upload";
+import { Bera } from "@irys/upload-ethereum";
+
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Bera).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
+};
+```
+
+## BNB
+
+Installing:
+
+```console
+npm install @irys/upload @irys/upload-ethereum
+```
+
+Importing & Configuring:
+
+```ts
+import { Uploader } from "@irys/upload";
+import { BNB } from "@irys/upload-ethereum";
+
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(BNB).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
+};
+```
+
+
+## Chainlink
+
+Installing:
+
+```console
+npm install @irys/upload @irys/upload-ethereum
+```
+
+Importing & Configuring:
+
+```ts
+import { Uploader } from "@irys/upload";
+import { Chainlink } from "@irys/upload-ethereum";
+
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Chainlink).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
+};
+```
+
+## Eclipse-eth
+
+Installing:
+
+```console
+npm install @irys/upload @irys/upload-solana
+```
+
+Importing & Configuring:
+
+```ts
+import { Uploader } from "@irys/upload";
+import { EclipseEth } from "@irys/upload-solana";
+
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(EclipseEth).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
+};
+```
+
+## Ethereum
+
+Installing:
+
+```console
+npm install @irys/upload @irys/upload-ethereum
+```
+
+Importing & Configuring:
+
+```ts
+import { Uploader } from "@irys/upload";
+import { Ethereum } from "@irys/upload-ethereum";
+
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Ethereum).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
+};
+```
+
+## Base Ethereum
+
+Installing:
+
+```console
+npm install @irys/upload @irys/upload-ethereum
+```
+
+Importing & Configuring:
+
+```ts
+import { Uploader } from "@irys/upload";
+import { BaseEth } from "@irys/upload-ethereum";
+
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(BaseEth).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
+};
+```
+
+## Linea Ethereum
+
+Installing:
+
+```console
+npm install @irys/upload @irys/upload-ethereum
+```
+
+Importing & Configuring:
+
+```ts
+import { Uploader } from "@irys/upload";
+import { LineaEth } from "@irys/upload-ethereum";
+
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(LineaEth).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
+};
+```
+
+## Scroll Ethereum
+
+Installing:
+
+```console
+npm install @irys/upload @irys/upload-ethereum
+```
+
+Importing & Configuring:
+
+```ts
+import { Uploader } from "@irys/upload";
+import { ScrollEth } from "@irys/upload-ethereum";
+
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(ScrollEth).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
+};
+```
+
+## IoTeX
+
+Installing:
+
+```console
+npm install @irys/upload @irys/upload-ethereum
+```
+
+Importing & Configuring:
+
+```ts
+import { Uploader } from "@irys/upload";
+import { Iotex } from "@irys/upload-ethereum";
+
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Iotex).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
+};
+```
+
+
+## Polygon
+
+Installing:
+
+```console
+npm install @irys/upload @irys/upload-ethereum
+```
+
+Importing & Configuring:
+
+```ts
+import { Uploader } from "@irys/upload";
+import { Matic } from "@irys/upload-ethereum";
+
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Matic).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
+};
+```
+
+## Solana
+
+Installing:
+
+```console
+npm install @irys/upload @irys/upload-solana
+```
+
+Importing & Configuring:
+
+```ts
+import { Uploader } from "@irys/upload";
+import { Solana } from "@irys/upload-solana";
+
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(Solana).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
+};
+```
+
+## USDC (on Ethereum)
+
+Installing:
+
+```console
+npm install @irys/upload @irys/upload-ethereum
+```
+
+Importing & Configuring:
+
+```ts
+import { Uploader } from "@irys/upload";
+import { USDCEth } from "@irys/upload-ethereum";
+
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(USDCEth).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
+};
+```
+
+## USDC (on Polygon)
+
+Installing:
+
+```console
+npm install @irys/upload @irys/upload-ethereum
+```
+
+Importing & Configuring:
+
+```ts
+import { Uploader } from "@irys/upload";
+import { USDCPolygon } from "@irys/upload-ethereum";
+
+const getIrysUploader = async () => {
+  const irysUploader = await Uploader(USDCPolygon).withWallet(process.env.PRIVATE_KEY);
+  return irysUploader;
+};
+```
+
+
+

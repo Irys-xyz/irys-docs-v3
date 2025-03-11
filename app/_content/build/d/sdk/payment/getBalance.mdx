@@ -1,0 +1,38 @@
+---
+description: Returns the connected wallet's balance.
+---
+
+import Callout from "@/components/callout";
+import ApiTable from "@/components/api-table/api-table.tsx";
+
+# `getBalance()`
+
+Returns the connected wallet's balance.
+
+## Returns
+
+<ApiTable columns={[
+	{ header: "Type", key: "type", span: 2 },
+	{ header: "Description", key: "description", span: 10 },
+]} data={[
+	  { type: "BigNumber", description: "Wallet balance in atomic units. You can convert it into standard units using [`irys.utils.fromAtomic()`](../utils/utils-fromAtomic)." },
+]}/>
+
+
+## Example
+
+<Callout type="info" emoji="ℹ️">
+	Use a token-specific version of `getIrysUploader()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/setup).  
+</Callout>
+
+```js
+const irys = await getIrysUploader();
+
+// Get loaded balance in atomic units
+const atomicBalance = await irys.getBalance();
+console.log(`Node balance (atomic units) = ${atomicBalance}`);
+
+// Convert balance to standard
+const convertedBalance = irys.utils.fromAtomic(atomicBalance);
+console.log(`Node balance (converted) = ${convertedBalance}`);
+```

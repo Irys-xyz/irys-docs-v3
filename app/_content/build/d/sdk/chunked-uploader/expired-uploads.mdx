@@ -1,0 +1,13 @@
+---
+description: Recovering expired uploads
+---
+
+# Expired uploads
+
+Paused uploads will expire after a period of inactivity. If you need to recover an expired upload, use the following:
+
+```js
+const resumeData = uploader.getResumeData(); 
+uploader.setResumeData(resumeData); 
+await uploader.uploadTransaction(dataItem); 
+```
