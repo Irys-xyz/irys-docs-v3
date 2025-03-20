@@ -1,18 +1,20 @@
 ---
-description: Irys testnet and devnet
+description: Irys Mainnet and devnet
 ---
 
 import Callout from "@/components/callout";
 
 # Networks
 
-Irys has two networks:
+Irys has two Bundler networks:
 
-- **Testnet**: Uploads are paid for with real tokens. At mainnet launch, all data uploaded to testnet bundlers will be migrated to mainnet, with no changes to transaction IDs.
+- **Mainnet**: Uploads are paid for with real tokens. At mainnet L1 launch, all data uploaded to these bundlers will be uploaded to mainnet, with no changes to transaction IDs.
 - **Devnet**: Uploads are paid for with free faucet tokens. Data is deleted after ~60 days.
 
+As well as an [L1 testnet](/build/programmability/introduction).
 
-## Connecting to Testnet
+
+## Connecting to the Mainnet bundler
 
 <Callout type="info" emoji="ℹ️">
 The following code is for using ethereum only, we [also have examples covering all of the tokens we support for payment](/build/d/sdk/setup). 
@@ -28,7 +30,7 @@ const getIrysUploader = async () => {
 };
 ```
 
-## Connecting to Devnet
+## Connecting to the Devnet bundler
 
 <Callout type="info" emoji="ℹ️">
 The following code is for using ethereum only, we [also have examples covering all of the tokens we support for payment](/build/d/sdk/setup). 

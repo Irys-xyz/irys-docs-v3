@@ -119,7 +119,7 @@ To deploy the smart contract using Remix IDE:
 
 Right-click on each of the above images and save them on your local drive.
 
-Next, fund the Irys Testnet with 0.1 Sepolia ETH to pay for your uploads.
+Next, fund the Irys Devnet bundler with 0.1 Sepolia ETH to pay for your uploads.
 
 <Callout type="info" emoji="ℹ️">
 	In all of these CLI examples, make sure to replace the value of the `-w` parameter with your own private key.
@@ -127,7 +127,7 @@ Next, fund the Irys Testnet with 0.1 Sepolia ETH to pay for your uploads.
 
 ```console
 irys fund 100000000000000000 \
-  -n testnet \
+  -n devnet \
   -t base-eth \
   -w 6dd5e....54a120201cb6a \
   --provider-url https://sepolia.base.org
@@ -141,21 +141,21 @@ Next, use the Irys Storage CLI to upload each of the images to Irys.
 
 ```console
 irys upload image-level-1.png \
-  -n testnet \
+  -n devnet \
   -t base-eth \
   -w 6dd5e....54a120201cb6a \
   --tags Content-Type image/png \
   --provider-url https://sepolia.base.org
 
 irys upload image-level-2.png \
-  -n testnet \
+  -n devnet \
   -t base-eth \
   -w 6dd5e....54a120201cb6a \
   --tags Content-Type image/png \
   --provider-url https://sepolia.base.org
 
 irys upload image-level-3.png \
-  -n testnet \
+  -n devnet \
   -t base-eth \
   -w 6dd5e....54a120201cb6a \
   --tags Content-Type image/png \
@@ -217,7 +217,7 @@ And upload just the first file using the Irys CLI.
 
 ```console
 irys upload metadata-level-1.json \
-  -n testnet \
+  -n devnet \
   -t base-eth \
   -w 6dd5e....54a120201cb6a \
   --tags Content-Type application/json \

@@ -19,7 +19,7 @@ Not all calls to `withdraw` will post immediately to your account, some blockcha
 	{ header: "Option", key: "type", span: 3 },
 	{ header: "Description", key: "description", span: 9 },
 ]} data={[
-	  { type: "-n", description: "The network to check, `testnet` or `devnet`, defaults to `testnet`." },
+	  { type: "-n", description: "The network to check, `mainnet` or `devnet`, defaults to `mainnet`." },
     { type: "-t", description: "The [token](/build/d/features/supported-tokens) to use when funding." },
     { type: "-w", description: "Your private key." },
     { type: "--provider-url", description: "RPC URL to use." },
@@ -27,7 +27,7 @@ Not all calls to `withdraw` will post immediately to your account, some blockcha
 
 ## Examples
 
-### Testnet
+### Mainnet
 
 ```console
 irys withdraw 1000000000000000 \
@@ -39,7 +39,7 @@ irys withdraw 1000000000000000 \
 
 ```console
 irys withdraw 1000000000000000 \
-  -n testnet \
+  -n devnet \
   -t ethereum \
   -w bf20......c9885307 \
   --provider-url https://rpc.sepolia.dev

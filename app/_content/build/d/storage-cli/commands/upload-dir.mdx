@@ -16,7 +16,7 @@ Uploads an entire directory of files.
 	{ header: "Option", key: "type", span: 3 },
 	{ header: "Description", key: "description", span: 9 },
 ]} data={[
-	  { type: "-n", description: "The network to check, `testnet` or `devnet`, defaults to `testnet`." },
+	  { type: "-n", description: "The network to check, `mainnet` or `devnet`, defaults to `mainnet`." },
     { type: "-t", description: "The [token](/build/d/features/supported-tokens) to use when funding." },
     { type: "-w", description: "Your private key." },
     { type: "--index-file", description: "Name of the file to use as an index for manifests." },
@@ -25,7 +25,7 @@ Uploads an entire directory of files.
 
 ## Examples
 
-### Testnet
+### Mainnet
 
 ```console
 irys upload-dir ./myImages \
