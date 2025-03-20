@@ -32,7 +32,7 @@ import {
 
 type NavItem = {
     slug: string;
-    title: string | { display: string };
+    title: string | { display: string; };
     children?: NavItem[];
 };
 
@@ -63,7 +63,7 @@ export const iconMapping = {
     "irys-consensus-overview": IconVortex, // Matches specification
     "irys-in-the-browser": IconNoodles, // Matches specification
     "quickstart": IconSensu,           // Fan symbol - matches ICON_DISTRIBUTE
-    "Testnet / Devnet": IconProof,    // Using shuriken as placeholder for ICON_LOCATE
+    "Mainnet / Devnet": IconProof,    // Using shuriken as placeholder for ICON_LOCATE
     "features": IconBento,             // Stacked blocks - matches ICON_PACKAGE
     "sdk": IconSwirl,                  // Using swirl as placeholder for ICON_STREAM
     "storage-cli": IconOnigiri,        // Using onigiri as placeholder for ICON_STORE
@@ -82,7 +82,7 @@ export const iconMapping = {
 export default function NavigationAccordion({
     initialNavigation
 }: {
-    initialNavigation: NavigationStructure
+    initialNavigation: NavigationStructure;
 }) {
     const pathname = usePathname();
     const [activeAccordionItems, setActiveAccordionItems] = useState<string[]>([]);

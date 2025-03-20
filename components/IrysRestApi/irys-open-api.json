@@ -7,14 +7,16 @@
   "servers": [
     {
       "url": "https://uploader.irys.xyz/",
-      "description": "Irys Testnet"
+      "description": "Irys Mainnnet Bundler"
     }
   ],
   "paths": {
     "/info": {
       "get": {
         "summary": "Info route",
-        "tags": ["general"],
+        "tags": [
+          "general"
+        ],
         "responses": {
           "200": {
             "description": "Successful response"
@@ -25,7 +27,9 @@
     "/public": {
       "get": {
         "summary": "Get public information",
-        "tags": ["general"],
+        "tags": [
+          "general"
+        ],
         "responses": {
           "200": {
             "description": "Successful response"
@@ -36,7 +40,9 @@
     "/status": {
       "get": {
         "summary": "Get status",
-        "tags": ["general"],
+        "tags": [
+          "general"
+        ],
         "responses": {
           "200": {
             "description": "Successful response"
@@ -47,7 +53,9 @@
     "/account/balance/{token}": {
       "get": {
         "summary": "Get user balance for token",
-        "tags": ["account"],
+        "tags": [
+          "account"
+        ],
         "parameters": [
           {
             "name": "token",
@@ -76,7 +84,9 @@
     "/account/approval": {
       "get": {
         "summary": "Get approval information",
-        "tags": ["account"],
+        "tags": [
+          "account"
+        ],
         "parameters": [
           {
             "name": "payingAddress",
@@ -113,7 +123,9 @@
     "/tx": {
       "post": {
         "summary": "Post transaction",
-        "tags": ["transactions"],
+        "tags": [
+          "transactions"
+        ],
         "requestBody": {
           "description": "Binary transaction data",
           "required": true,
@@ -136,7 +148,9 @@
     "/tx/{token}": {
       "post": {
         "summary": "Post transaction",
-        "tags": ["transactions"],
+        "tags": [
+          "transactions"
+        ],
         "parameters": [
           {
             "name": "token",
@@ -169,7 +183,9 @@
     "/tx/{txId}/data": {
       "head": {
         "summary": "Get transaction data",
-        "tags": ["transactions"],
+        "tags": [
+          "transactions"
+        ],
         "parameters": [
           {
             "name": "txId",
@@ -188,7 +204,9 @@
       },
       "get": {
         "summary": "Get transaction data",
-        "tags": ["transactions"],
+        "tags": [
+          "transactions"
+        ],
         "parameters": [
           {
             "name": "txId",
@@ -209,7 +227,9 @@
     "/tx/{txId}/status": {
       "get": {
         "summary": "Get transaction status",
-        "tags": ["transactions"],
+        "tags": [
+          "transactions"
+        ],
         "parameters": [
           {
             "name": "txId",
@@ -230,7 +250,9 @@
     "/tx/{txId}/tags": {
       "get": {
         "summary": "Get transaction tags",
-        "tags": ["transactions"],
+        "tags": [
+          "transactions"
+        ],
         "parameters": [
           {
             "name": "txId",
@@ -251,7 +273,9 @@
     "/tx/{txId}": {
       "get": {
         "summary": "Get transaction metadata",
-        "tags": ["transactions"],
+        "tags": [
+          "transactions"
+        ],
         "parameters": [
           {
             "name": "txId",
@@ -272,7 +296,9 @@
     "/price/{token}/{size}": {
       "get": {
         "summary": "Get price for token and size",
-        "tags": ["price"],
+        "tags": [
+          "price"
+        ],
         "parameters": [
           {
             "name": "token",
@@ -301,7 +327,9 @@
     "/chunks/{token}/{txid}/{offset}": {
       "post": {
         "summary": "Upload chunk",
-        "tags": ["chunks"],
+        "tags": [
+          "chunks"
+        ],
         "parameters": [
           {
             "name": "token",
@@ -348,7 +376,9 @@
       },
       "get": {
         "summary": "Get chunk",
-        "tags": ["chunks"],
+        "tags": [
+          "chunks"
+        ],
         "parameters": [
           {
             "name": "token",
@@ -385,7 +415,9 @@
     "/account/withdraw": {
       "post": {
         "summary": "Withdraw user balance",
-        "tags": ["account"],
+        "tags": [
+          "account"
+        ],
         "parameters": [
           {
             "name": "address",
@@ -406,7 +438,9 @@
     "/account/withdrawals/{token}": {
       "get": {
         "summary": "Get withdrawals for token",
-        "tags": ["account"],
+        "tags": [
+          "account"
+        ],
         "parameters": [
           {
             "name": "token",
@@ -435,7 +469,9 @@
     "/account/withdrawals": {
       "get": {
         "summary": "Get all withdrawals",
-        "tags": ["account"],
+        "tags": [
+          "account"
+        ],
         "parameters": [
           {
             "name": "address",

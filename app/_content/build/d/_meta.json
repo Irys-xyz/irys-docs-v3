@@ -1,6 +1,6 @@
 {
 	"quickstart": "Quickstart",
-	"networks": "Testnet / Devnet",
+	"networks": "Mainnet / Devnet",
 	"features": "Features",
 	"sdk": "SDK",
 	"irys-in-the-browser": "Irys in the Browser",
