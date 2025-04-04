@@ -29,8 +29,11 @@ const IrysAddChainButton: React.FC = () => {
                 console.error('Failed to add Irys network:', error);
                 setError('Failed to add Irys Network, please check your wallet and try again.');
             }
+        } else {
+            setError('Web3 wallet not found. Install MetaMask or another Ethereum wallet to connect.');
         }
     };
+
     return (
         <>
 
