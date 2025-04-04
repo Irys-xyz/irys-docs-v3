@@ -17,6 +17,7 @@ const testnetV1 = {
 const IrysAddChainButton: React.FC = () => {
 
     const [error, setError] = useState<string | null>(null);
+    const [success, setSuccess] = useState<string | null>(null);
 
     const onClick = async () => {
         if (window.ethereum) {
@@ -31,10 +32,12 @@ const IrysAddChainButton: React.FC = () => {
                         setError('Request blocked due to spam protection, please try again in a few minutes.');
                         break;
                     case -32602:
-                        setError('You have already added this network.');
+                        setError(null);
+                        setSuccess('You have already added this network.');
                         break;
                     case -32603:
-                        setError('You already have this network added.');
+                        setError(null);
+                        setSuccess('You already have this network added.');
                         break;
                     default:
                         setError('Failed to add Irys Network, please check your wallet and try again.');
@@ -55,6 +58,7 @@ const IrysAddChainButton: React.FC = () => {
                 Add Irys Network to Your Wallet
             </button>
             {error && <div className="text-red-500 mt-2">{error}</div>}
+            {success && <div className="text-primary-green mt-2">{success}</div>}
         </>
     );
 
