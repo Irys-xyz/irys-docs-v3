@@ -26,8 +26,20 @@ const IrysAddChainButton: React.FC = () => {
                     params: [testnetV1],
                 });
             } catch (error) {
-                console.error('Failed to add Irys network:', error);
-                setError('Failed to add Irys Network, please check your wallet and try again.');
+                switch ((error as any).code) {
+                    case 4100:
+                        setError('Request blocked due to spam protection, please try again in a few minutes.');
+                        break;
+                    case -32602:
+                        setError('You have already added this network.');
+                        break;
+                    case -32603:
+                        setError('You already have this network added.');
+                        break;
+                    default:
+                        setError('Failed to add Irys Network, please check your wallet and try again.');
+                        break;
+                }
             }
         } else {
             setError('Web3 wallet not found. Install MetaMask or another Ethereum wallet to connect.');
