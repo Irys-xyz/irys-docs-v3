@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "https://uploader.irys.xyz/",
+      "url": "hhttps://gateway.irys.xyz/",
       "description": "Irys Mainnet Bundler"
     }
   ],
