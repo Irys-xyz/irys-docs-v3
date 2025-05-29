@@ -12,9 +12,7 @@ export default async function Home({ children }: { children: React.ReactNode, fr
       <div className="flex mt-16">
         <aside className="h-[calc(100vh-64px)] bg-grey4 w-[298px] fixed top-16 hidden lg:block">
           <div className="flex flex-col h-full border-r border-grey4">
-            <div className="overflow-y-auto flex-grow !scrollbar-thin scrollbar-track-grey4 scrollbar-thumb-grey5 pb-8">
-              <NavigationAccordion initialNavigation={navigation} />
-            </div>
+            <NavigationAccordion initialNavigation={navigation} />
           </div>
         </aside>
         <main className={`w-full lg:ml-[298px] relative px-10 md:p-0 ${false ? 'mr-[298px]' : ''}`}>
