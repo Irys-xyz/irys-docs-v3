@@ -110,7 +110,7 @@ const ApiTable: React.FC<Props> = ({ columns, data }) => {
         {columns.map((col, index) => (
           <div
             key={index}
-            className={`p-3 border-b border-[#262626] border-l first:border-l-0 ${col.span ? SPAN_TO_CLASS[col.span] : "col-span-1"
+            className={`p-3 border-b border-[#262626] border-l first:border-l-0 break-words min-w-0 ${col.span ? SPAN_TO_CLASS[col.span] : "col-span-1"
               } ${index === columns.length - 1 ? "text-left" : ""}`}
           >
             {col.header}
@@ -127,7 +127,7 @@ const ApiTable: React.FC<Props> = ({ columns, data }) => {
             {columns.map((col, colIndex) => (
               <div
                 key={colIndex}
-                className={`p-3 border-l first:border-l-0 border-[#262626] ${col.span ? SPAN_TO_CLASS[col.span] : "col-span-1"
+                className={`p-3 border-l first:border-l-0 border-[#262626] break-words min-w-0 ${col.span ? SPAN_TO_CLASS[col.span] : "col-span-1"
                   } ${colIndex === columns.length - 1 ? "text-left" : ""}`}
               >
                 {parseMarkdownLinks(row[col.key])}
