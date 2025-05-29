@@ -92,10 +92,11 @@ Pass an array of `File` objects.
 	{ header: "Type", key: "type", span: 2 },
 	{ header: "Description", key: "description", span: 8 },
 ]} data={[
-	  { name: "files", type: "TaggedFile[]", description: "Path to the folder being uploaded." },
-		{ name: "indexFileRelPath", type: "string", description: "(Optional) Your own throwaway JWK to use for signing (i.e if you want to use the same one for more than one set of uploads)." },
-		{ name: "throwawayKey", type: "number", description: "(Optional) The number of files to upload at once." },
-		{ name: "seperateManifestTx", type: "boolean", description: "(Optional) If true, the manifest transaction will be excluded from the bundle making its tags indexable and queryable." },
+	{ name: "files", type: "TaggedFile[]", description: "Path to the folder being uploaded." },
+	{ name: "throwawayKey", type: "string", description: "(Optional) Your own throwaway JWK to use for signing (i.e if you want to use the same one for more than one set of uploads)." },
+	{ name: "indexFileRelPath", type: "string", description: "(Optional) Relative path for the index file, i.e folder/index.html." },
+	{ name: "separateManifestTx", type: "boolean", description: "(Optional) If true, the manifest transaction will be excluded from the bundle making its tags indexable and queryable." },
+	{ name: "manifestTags", type: "Tag[]", description: "(Optional) List of tags to add onto the manifest transaction." },
 ]}/>
 
 ## Returns
