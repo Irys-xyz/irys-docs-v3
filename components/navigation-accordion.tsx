@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { useEffect, useCallback, useRef } from "react";
 import Link from 'next/link';
 import {
     Accordion,
@@ -29,6 +29,7 @@ import {
     IconSwirl, IconTriangleShapes,
     IconVortex
 } from "@/components/svg/icons";
+import { useNavigation } from "@/components/providers/navigation-provider";
 
 type NavItem = {
     slug: string;
@@ -85,17 +86,7 @@ export default function NavigationAccordion({
     initialNavigation: NavigationStructure;
 }) {
     const pathname = usePathname();
-    const [activeAccordionItems, setActiveAccordionItems] = useState<string[]>([]);
-
-    useEffect(() => {
-        const pathParts = pathname.split('/').filter(Boolean);
-        const activeItems = pathParts.reduce((acc: string[], part, index) => {
-            if (index === 0) return acc;
-            const path = pathParts.slice(1, index + 1).join('/');
-            return [...acc, path];
-        }, []);
-        setActiveAccordionItems(activeItems);
-    }, [pathname]);
+    const { activeAccordionItems, setActiveAccordionItems, scrollContainerRef, scrollPosition, setScrollPosition } = useNavigation();
 
     const isLinkActive = (path: string) => {
         const pathWithoutLeadingSlash = pathname.startsWith('/') ? pathname.slice(1) : pathname;
@@ -110,173 +101,217 @@ export default function NavigationAccordion({
         return Icon ? <Icon className="w-6 h-6" /> : null;
     };
 
+    // Track scroll position with throttling
+    const handleScroll = useCallback((event: React.UIEvent<HTMLDivElement>) => {
+        const scrollTop = event.currentTarget.scrollTop;
+
+        // Throttle scroll position updates
+        if (scrollTimeoutRef.current) {
+            clearTimeout(scrollTimeoutRef.current);
+        }
+
+        scrollTimeoutRef.current = setTimeout(() => {
+            setScrollPosition(scrollTop);
+        }, 100);
+    }, [setScrollPosition]);
+
+    const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+    // Clean up timeout on unmount
+    useEffect(() => {
+        return () => {
+            if (scrollTimeoutRef.current) {
+                clearTimeout(scrollTimeoutRef.current);
+            }
+        };
+    }, []);
+
+    // Restore scroll position after accordion items are set and DOM is updated
+    useEffect(() => {
+        if (scrollContainerRef.current && scrollPosition > 0) {
+            // Use a small delay to ensure accordion animations are complete
+            // const timer = setTimeout(() => {
+            if (scrollContainerRef.current) {
+                scrollContainerRef.current.scrollTop = scrollPosition;
+            }
+            // }, 0);
+
+            // return () => clearTimeout(timer);
+        }
+    }, [activeAccordionItems, scrollPosition, scrollContainerRef]);
+
     return (
-
-        <Accordion
-            type="multiple"
-            className="text-grey2"
-            value={activeAccordionItems}
-            onValueChange={setActiveAccordionItems}
+        <div
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+            className="overflow-y-auto h-full w-full !scrollbar-thin scrollbar-track-grey4 scrollbar-thumb-grey5 pb-8"
         >
-            {Object.entries(initialNavigation).map(([section, items], sectionIndex) => (
-                <div key={section}>
-                    {sectionIndex === 0 && (
-                        <div className="flex flex-col h-full border-r border-grey4 sticky top-0 bg-grey4 z-10">
-                            <div className="p-5 w-full border-b border-grey5 flex-shrink-0">
-                                <Title className="!text-[32px] !leading-none">
-                                    Learn
-                                </Title>
+            <Accordion
+                type="multiple"
+                className="text-grey2"
+                value={activeAccordionItems}
+                onValueChange={setActiveAccordionItems}
+            >
+                {Object.entries(initialNavigation).map(([section, items], sectionIndex) => (
+                    <div key={section}>
+                        {sectionIndex === 0 && (
+                            <div className="flex flex-col h-full border-r border-grey4 sticky top-0 bg-grey4 z-10">
+                                <div className="p-5 w-full border-b border-grey5 flex-shrink-0">
+                                    <Title className="!text-[32px] !leading-none">
+                                        Learn
+                                    </Title>
+                                </div>
                             </div>
-                        </div>
-                    )}
-                    {sectionIndex === 1 && (
-                        <div className="flex flex-col h-full border-r border-grey4 sticky top-0 bg-grey4 z-10">
-                            <div className="p-5 w-full border-b border-grey5 flex-shrink-0">
-                                <Title className="!text-[32px] !leading-none">
-                                    Build
-                                </Title>
+                        )}
+                        {sectionIndex === 1 && (
+                            <div className="flex flex-col h-full border-r border-grey4 sticky top-0 bg-grey4 z-10">
+                                <div className="p-5 w-full border-b border-grey5 flex-shrink-0">
+                                    <Title className="!text-[32px] !leading-none">
+                                        Build
+                                    </Title>
+                                </div>
+
                             </div>
+                        )}
+                        {items.map((item) => {
+                            if (typeof item.title === 'object' && item.title.display === 'hidden') return null;
 
-                        </div>
-                    )}
-                    {items.map((item) => {
-                        if (typeof item.title === 'object' && item.title.display === 'hidden') return null;
+                            const itemPath = `${item.slug}`;
+                            const isActive = isLinkActive(itemPath);
 
-                        const itemPath = `${item.slug}`;
-                        const isActive = isLinkActive(itemPath);
+                            return (
+                                <AccordionItem
+                                    key={itemPath}
+                                    value={itemPath}
+                                    className="border-b border-grey5 border-solid"
+                                >
+                                    <AccordionTrigger className={`pl-4 pr-3 w-full h-12 ${isActive ? 'text-white' : ''}`}>
+                                        {getIcon(item.slug, typeof item.title === 'string' ? item.title : undefined) && (
+                                            <div className="mr-2">
+                                                {getIcon(item.slug, typeof item.title === 'string' ? item.title : undefined)}
+                                            </div>
+                                        )}
+                                        <Paragraph size="caps" className="text-start">
+                                            {typeof item.title === 'string' ? item.title : ''}
+                                        </Paragraph>
+                                    </AccordionTrigger>
+                                    {item && item?.children && item?.children?.length > 0 && (
+                                        <AccordionContent className="bg-[#32363D] w-full p-0 border-t border-grey5 border-solid">
+                                            {item.children.map((child) => {
+                                                if (typeof child.title === 'object' && child.title.display === 'hidden') return null;
 
-                        return (
-                            <AccordionItem
-                                key={itemPath}
-                                value={itemPath}
-                                className="border-b border-grey5 border-solid"
-                            >
-                                <AccordionTrigger className={`pl-4 pr-3 w-full h-12 ${isActive ? 'text-white' : ''}`}>
-                                    {getIcon(item.slug, typeof item.title === 'string' ? item.title : undefined) && (
-                                        <div className="mr-2">
-                                            {getIcon(item.slug, typeof item.title === 'string' ? item.title : undefined)}
-                                        </div>
-                                    )}
-                                    <Paragraph size="caps" className="text-start">
-                                        {typeof item.title === 'string' ? item.title : ''}
-                                    </Paragraph>
-                                </AccordionTrigger>
-                                {item && item?.children && item?.children?.length > 0 && (
-                                    <AccordionContent className="bg-[#32363D] w-full p-0 border-t border-grey5 border-solid">
-                                        {item.children.map((child) => {
-                                            if (typeof child.title === 'object' && child.title.display === 'hidden') return null;
+                                                const childPath = `${itemPath}/${child.slug}`;
+                                                const isChildActive = isLinkActive(childPath);
 
-                                            const childPath = `${itemPath}/${child.slug}`;
-                                            const isChildActive = isLinkActive(childPath);
+                                                if (child && child?.children && child?.children?.length > 0) {
+                                                    return (
+                                                        <AccordionItem
+                                                            key={childPath}
+                                                            value={childPath}
+                                                            className="border-b border-grey5 border-solid"
+                                                        >
+                                                            <AccordionTrigger className={`pl-4 pr-3 h-12 w-full ${isChildActive ? 'text-white' : ''}`}>
+                                                                <div className="flex items-center">
+                                                                    {getIcon(child.slug, typeof child.title === 'string' ? child.title : undefined) && (
+                                                                        <div className="mr-2">
+                                                                            {getIcon(child.slug, typeof child.title === 'string' ? child.title : undefined)}
+                                                                        </div>
+                                                                    )}
+                                                                    <Paragraph size="small" className="text-start">
+                                                                        {typeof child.title === 'string' ? child.title : ''}
+                                                                    </Paragraph>
+                                                                </div>
+                                                            </AccordionTrigger>
+                                                            <AccordionContent className="bg-[#32363D] w-full p-0">
+                                                                {child?.children?.map((grandChild) => {
+                                                                    const grandChildPath = `${childPath}/${grandChild.slug}`;
+                                                                    const isGreatGrandChildActive = isLinkActive(grandChildPath);
 
-                                            if (child && child?.children && child?.children?.length > 0) {
-                                                return (
-                                                    <AccordionItem
-                                                        key={childPath}
-                                                        value={childPath}
-                                                        className="border-b border-grey5 border-solid"
-                                                    >
-                                                        <AccordionTrigger className={`pl-4 pr-3 h-12 w-full ${isChildActive ? 'text-white' : ''}`}>
-                                                            <div className="flex items-center">
-                                                                {getIcon(child.slug, typeof child.title === 'string' ? child.title : undefined) && (
-                                                                    <div className="mr-2">
-                                                                        {getIcon(child.slug, typeof child.title === 'string' ? child.title : undefined)}
-                                                                    </div>
-                                                                )}
-                                                                <Paragraph size="small" className="text-start">
-                                                                    {typeof child.title === 'string' ? child.title : ''}
-                                                                </Paragraph>
-                                                            </div>
-                                                        </AccordionTrigger>
-                                                        <AccordionContent className="bg-[#32363D] w-full p-0">
-                                                            {child?.children?.map((grandChild) => {
-                                                                const grandChildPath = `${childPath}/${grandChild.slug}`;
-                                                                const isGreatGrandChildActive = isLinkActive(grandChildPath);
+                                                                    if (grandChild && grandChild?.children && grandChild?.children?.length > 0) {
+                                                                        return (
+                                                                            <AccordionItem
+                                                                                key={grandChildPath}
+                                                                                value={grandChildPath}
+                                                                                className="border-b border-grey5 border-solid"
+                                                                            >
+                                                                                <AccordionTrigger className={`bg-[#1A1C20]/40 pl-4 pr-3 w-full ${isGreatGrandChildActive ? 'text-white' : ''}`}>
+                                                                                    <div className="flex items-center">
+                                                                                        {getIcon(grandChild.slug, typeof grandChild.title === 'string' ? grandChild.title : undefined) && (
+                                                                                            <div className="mr-2">
+                                                                                                {getIcon(grandChild.slug, typeof grandChild.title === 'string' ? grandChild.title : undefined)}
+                                                                                            </div>
+                                                                                        )}
+                                                                                        <Paragraph size="small" className="text-start">
+                                                                                            {typeof grandChild.title === 'string' ? grandChild.title : ''}
+                                                                                        </Paragraph>
+                                                                                    </div>
+                                                                                </AccordionTrigger>
+                                                                                <AccordionContent className=" p-0">
+                                                                                    {grandChild?.children?.map((greatGrandChild) => {
+                                                                                        const greatGrandChildPath = `${grandChildPath}/${greatGrandChild.slug}`;
+                                                                                        const isGreatGreatGrandChildActive = isLinkActive(greatGrandChildPath);
 
-                                                                if (grandChild && grandChild?.children && grandChild?.children?.length > 0) {
+                                                                                        return (
+                                                                                            <Link
+                                                                                                key={greatGrandChildPath}
+                                                                                                href={`/${section}/${greatGrandChildPath}`}
+                                                                                                className={`bg-[#1A1C20]/80 pl-4 pr-3 h-12 flex items-center w-full hover:text-white border-b last:border-b-0 border-grey5 border-solid hover:bg-grey5 first:border-t ${isGreatGreatGrandChildActive ? 'text-white !bg-grey5' : ''}`}
+                                                                                            >
+                                                                                                <Paragraph className="text-start" size="small">
+                                                                                                    {typeof greatGrandChild.title === 'string' ? greatGrandChild.title : ''}
+                                                                                                </Paragraph>
+                                                                                            </Link>
+                                                                                        );
+                                                                                    })}
+                                                                                </AccordionContent>
+                                                                            </AccordionItem>
+                                                                        );
+                                                                    }
+
                                                                     return (
-                                                                        <AccordionItem
+                                                                        <Link
                                                                             key={grandChildPath}
-                                                                            value={grandChildPath}
-                                                                            className="border-b border-grey5 border-solid"
+                                                                            href={`/${section}/${grandChildPath}`}
+                                                                            className={`bg-[#1A1C20]/40 pl-4 pr-3 h-12 flex items-center w-full hover:text-white border-b last:border-b-0 border-grey5 border-solid hover:bg-grey5 first:border-t ${isGreatGrandChildActive ? 'text-white !bg-grey5' : ''}`}
                                                                         >
-                                                                            <AccordionTrigger className={`bg-[#1A1C20]/40 pl-4 pr-3 w-full ${isGreatGrandChildActive ? 'text-white' : ''}`}>
-                                                                                <div className="flex items-center">
-                                                                                    {getIcon(grandChild.slug, typeof grandChild.title === 'string' ? grandChild.title : undefined) && (
-                                                                                        <div className="mr-2">
-                                                                                            {getIcon(grandChild.slug, typeof grandChild.title === 'string' ? grandChild.title : undefined)}
-                                                                                        </div>
-                                                                                    )}
-                                                                                    <Paragraph size="small" className="text-start">
-                                                                                        {typeof grandChild.title === 'string' ? grandChild.title : ''}
-                                                                                    </Paragraph>
-                                                                                </div>
-                                                                            </AccordionTrigger>
-                                                                            <AccordionContent className=" p-0">
-                                                                                {grandChild?.children?.map((greatGrandChild) => {
-                                                                                    const greatGrandChildPath = `${grandChildPath}/${greatGrandChild.slug}`;
-                                                                                    const isGreatGreatGrandChildActive = isLinkActive(greatGrandChildPath);
-
-                                                                                    return (
-                                                                                        <Link
-                                                                                            key={greatGrandChildPath}
-                                                                                            href={`/${section}/${greatGrandChildPath}`}
-                                                                                            className={`bg-[#1A1C20]/80 pl-4 pr-3 h-12 flex items-center w-full hover:text-white border-b last:border-b-0 border-grey5 border-solid hover:bg-grey5 first:border-t ${isGreatGreatGrandChildActive ? 'text-white !bg-grey5' : ''}`}
-                                                                                        >
-                                                                                            <Paragraph className="text-start" size="small">
-                                                                                                {typeof greatGrandChild.title === 'string' ? greatGrandChild.title : ''}
-                                                                                            </Paragraph>
-                                                                                        </Link>
-                                                                                    );
-                                                                                })}
-                                                                            </AccordionContent>
-                                                                        </AccordionItem>
+                                                                            <Paragraph className="text-start" size="small">
+                                                                                {typeof grandChild.title === 'string' ? grandChild.title : ''}
+                                                                            </Paragraph>
+                                                                        </Link>
                                                                     );
-                                                                }
+                                                                })}
+                                                            </AccordionContent>
+                                                        </AccordionItem>
+                                                    );
+                                                }
 
-                                                                return (
-                                                                    <Link
-                                                                        key={grandChildPath}
-                                                                        href={`/${section}/${grandChildPath}`}
-                                                                        className={`bg-[#1A1C20]/40 pl-4 pr-3 h-12 flex items-center w-full hover:text-white border-b last:border-b-0 border-grey5 border-solid hover:bg-grey5 first:border-t ${isGreatGrandChildActive ? 'text-white !bg-grey5' : ''}`}
-                                                                    >
-                                                                        <Paragraph className="text-start" size="small">
-                                                                            {typeof grandChild.title === 'string' ? grandChild.title : ''}
-                                                                        </Paragraph>
-                                                                    </Link>
-                                                                );
-                                                            })}
-                                                        </AccordionContent>
-                                                    </AccordionItem>
+                                                return (
+                                                    <Link
+                                                        key={childPath}
+                                                        href={`/${section}/${childPath}`}
+                                                        className={`pl-4 pr-3 h-12 flex items-center w-full hover:text-white border-b border-grey5 border-solid hover:bg-grey5 ${isChildActive ? 'text-white bg-grey5' : ''
+                                                            }`}
+                                                    >
+                                                        {getIcon(child.slug, typeof child.title === 'string' ? child.title : undefined) && (
+                                                            <div className="mr-2">
+                                                                {getIcon(child.slug, typeof child.title === 'string' ? child.title : undefined)}
+                                                            </div>
+                                                        )}
+                                                        <Paragraph className="text-start" size="small">
+                                                            {typeof child.title === 'string' ? child.title : ''}
+                                                        </Paragraph>
+                                                    </Link>
                                                 );
-                                            }
+                                            })}
+                                        </AccordionContent>
+                                    )}
+                                </AccordionItem>
+                            );
+                        })}
 
-                                            return (
-                                                <Link
-                                                    key={childPath}
-                                                    href={`/${section}/${childPath}`}
-                                                    className={`pl-4 pr-3 h-12 flex items-center w-full hover:text-white border-b border-grey5 border-solid hover:bg-grey5 ${isChildActive ? 'text-white bg-grey5' : ''
-                                                        }`}
-                                                >
-                                                    {getIcon(child.slug, typeof child.title === 'string' ? child.title : undefined) && (
-                                                        <div className="mr-2">
-                                                            {getIcon(child.slug, typeof child.title === 'string' ? child.title : undefined)}
-                                                        </div>
-                                                    )}
-                                                    <Paragraph className="text-start" size="small">
-                                                        {typeof child.title === 'string' ? child.title : ''}
-                                                    </Paragraph>
-                                                </Link>
-                                            );
-                                        })}
-                                    </AccordionContent>
-                                )}
-                            </AccordionItem>
-                        );
-                    })}
-
-                </div>
-            ))}
-        </Accordion>
+                    </div>
+                ))}
+            </Accordion>
+        </div>
     );
 } 

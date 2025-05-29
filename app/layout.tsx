@@ -3,6 +3,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { NavigationProvider } from "@/components/providers/navigation-provider";
 
 const skrappa = localFont({
   src: [
@@ -47,7 +48,9 @@ export default function RootLayout({
       <body
         className={`${skrappa.variable} ${skrappaNarrow.variable} ${skrappaReasonable.variable} ${gtPressura.variable} antialiased`}
       >
-        {children}
+        <NavigationProvider>
+          {children}
+        </NavigationProvider>
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ""} />
     </html>
