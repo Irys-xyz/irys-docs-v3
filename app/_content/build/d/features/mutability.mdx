@@ -28,7 +28,7 @@ const receiptOne = await irysUploader.upload("First TX");
 console.log(`TX 1 uploaded https://gateway.irys.xyz/mutable/${receiptOne.id}`);
 ```
 
-2. Upload an addition to the series as a new transaction, and add a tag named `Root-TX` with the value of the original transaction ID
+2. Upload an addition to the series as a new transaction, and add a tag named `Root-TX` with the value of the original transaction ID:
 
 ```js
 const tags = [{ name: "Root-TX", value: receiptOne.id }];
