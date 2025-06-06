@@ -18,14 +18,14 @@ Errors:
 
 This error can be safely ignored, it will not cause any issues. To make the error go away, you'll need to install updated Python and C++ build tools.
 
-**MacOS**
+#### **MacOS**
 
 Current versions of MacOS come pre-built with Python. To install the C++ build tools:
 
 - First install [XCode](https://developer.apple.com/xcode/download/)
 - Once XCode is installed, go to Preferences, Downloads, and install the Command Line Tools
 
-**Windows**
+#### **Windows**
 
 Windows users need to install both Python and C++ build tools. These commands must be run with administrator permissions.
 
@@ -37,7 +37,7 @@ npm i -g --add-python-to-path --vs2015 --production windows-build-tools
 npm i -g node-gyp@latest
 ```
 
-**UNIX**
+#### **UNIX**
 
 Most UNIX distributions come with Python installed. To install C++ build tools, the following works for most Debian-based systems. For others, use your package manager to install "GCC build tools".
 
@@ -49,7 +49,7 @@ sudo apt-get install build-essential
 
 **Error message**: Error: Not enough balance for transaction
 
-This error occurs when you try to upload to a node without first funding it. 
+This error occurs when you try to upload to a node without first funding it.
 
 Tokens for use on our devnet bundler can be obtained for free from common faucets like the ones for [Solana](https://faucet.solana.com/) and [Sepolia](https://sepoliafaucet.com/).
 
@@ -63,9 +63,9 @@ This can be fixed by configuring Irys as follows:
 
 ```js
 const irys = new Irys({
-	url: nodeUrl,
-	token,
-	provider,
-	config: { tokenOpts: { commitment: "finalized" } },
+  url: nodeUrl,
+  token,
+  provider,
+  config: { tokenOpts: { commitment: "finalized" } },
 });
 ```

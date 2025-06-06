@@ -13,38 +13,35 @@ Irys has two Bundler networks:
 
 As well as an [L1 testnet](/build/programmability/introduction).
 
-
-## Connecting to the Mainnet bundler
-
 <Callout type="info" emoji="ℹ️">
-The following code is for using ethereum only, we [also have examples covering all of the tokens we support for payment](/build/d/sdk/setup). 
+  The following code is for using Ethereum only, we [also have examples covering
+  all of the tokens we support for payment](/build/d/sdk/setup).
 </Callout>
+## Connecting to the Mainnet bundler
 
 ```ts
 import { Uploader } from "@irys/upload";
 import { Ethereum } from "@irys/upload-ethereum";
- 
+
 const getIrysUploader = async () => {
-  const irysUploader = await Uploader(Ethereum).withWallet(process.env.PRIVATE_KEY);
+  const irysUploader = await Uploader(Ethereum).withWallet(
+    process.env.PRIVATE_KEY
+  );
   return irysUploader;
 };
 ```
 
 ## Connecting to the Devnet bundler
 
-<Callout type="info" emoji="ℹ️">
-The following code is for using ethereum only, we [also have examples covering all of the tokens we support for payment](/build/d/sdk/setup). 
-</Callout>
-
-To connect to devnet, append the functions `withRpc()` and `devnet()`. RPC URLs are required when using devnet. 
+To connect to devnet, append the functions `withRpc()` and `devnet()`. RPC URLs are required when using devnet.
 
 ```ts
 import { Uploader } from "@irys/upload";
 import { Ethereum } from "@irys/upload-ethereum";
- 
+
 const getIrysUploader = async () => {
   // RPC URLs change often. Use a current one from https://chainlist.org/
-  const rpcURL = ""; 
+  const rpcURL = "";
   const irysUploader = await Uploader(Ethereum)
     .withWallet(process.env.PRIVATE_KEY)
     .withRpc(rpcURL)
