@@ -60,7 +60,7 @@ export const CodeBlock: FC<ComponentProps<'pre'>> = ({ children, className, ...p
           "bg-gray-700/80 hover:bg-gray-600/80 text-gray-300 hover:text-white",
           "opacity-0 group-hover:opacity-100 focus:opacity-100",
           "border border-gray-600/50 hover:border-gray-500",
-          copied && "bg-green-600/80 text-green-100"
+          copied && "!bg-[#51ffd6] !text-black !border-[#51ffd6]"
         )}
         title={copied ? "Copied!" : "Copy code"}
         aria-label={copied ? "Code copied to clipboard" : "Copy code to clipboard"}
