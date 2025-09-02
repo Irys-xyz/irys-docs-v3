@@ -1,6 +1,7 @@
 import type { MDXComponents } from 'mdx/types'
 import { Table } from './components/table'
 import { Code } from './components/code'
+import { CodeBlock } from './components/code-block'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
     return {
@@ -8,7 +9,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         td: Table.Td,
         th: Table.Th,
         tr: Table.Tr,
-        code: Code,
+        code: Code,        // For inline code
+        pre: CodeBlock,    // For code blocks
         ...components
     };
 
