@@ -16,7 +16,7 @@ With mutable references you create a single, static URL that is linked to a sequ
 
 To create a mutable reference:
 
-1. Upload a base transaction to Irys and reference it using a URL in the following format `https://gateway.irys.xyz/mutable/:txId`
+1. Upload a base transaction to Irys and reference it using a URL in the following format: `https://gateway.irys.xyz/mutable/:txId`
 
 <Callout type="info" emoji="ℹ️">
 	Use a token-specific version of `getIrysUploader()` to connect to an Irys Bundler before uploading. Choose [one from here](/build/d/sdk/setup).  
@@ -28,7 +28,7 @@ const receiptOne = await irysUploader.upload("First TX");
 console.log(`TX 1 uploaded https://gateway.irys.xyz/mutable/${receiptOne.id}`);
 ```
 
-2. Upload an addition to the series as a new transaction, and add a tag named `Root-TX` with the value of the original transaction ID.
+2. Upload an addition to the series as a new transaction, and add a tag named `Root-TX` with the value of the original transaction ID:
 
 ```js
 const tags = [{ name: "Root-TX", value: receiptOne.id }];
