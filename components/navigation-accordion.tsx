@@ -58,6 +58,7 @@ export const iconMapping = {
     "bundling-transactions": IconTriangleShapes, // Triangles - matches ICON_CONNECTION intent
     "irys-gateway": IconSpiritGate,    // Gate - matches ICON_PORTAL intent
     "becoming-a-miner-on-irys": IconOnigiri, // Using gate icon as placeholder - should ideally be tent/mining camp
+    "contracts": IconVortex, //temp
     "partitions-overview": IconSensu,   // Fan - matches ICON_DISTRIBUTE intent
     "ledgers-overview": IconLantern,    // Matches specification
     "transactions-overview": IconNoodles, // Container - somewhat matches ICON_INSTANT intent
