@@ -6,12 +6,13 @@ import Callout from "@/components/callout";
 
 # Migrating to the Irys L1
 
-The Irys testnet is now live with support for permanent data uploads, and temporary data support coming soon. In the coming weeks, we’ll also introduce the [IrysVM](https://docs.irys.xyz/learn/why-build-on-irys/irysvm) and [Programmable Data](https://docs.irys.xyz/learn/why-build-on-irys/programmable-data). **Irys provides early access to all these new features for developers building on our platform.**
+The Irys testnet is now live with support for permanent data uploads, and temporary data support coming soon. In the coming weeks, we’ll also introduce the [IrysVM](https://docs.irys.xyz/learn/why/why-irysvm) and [Programmable Data](https://docs.irys.xyz/learn/why/why-programmable-data). **Irys provides early access to all these new features for developers building on our platform.**
 
 At mainnet launch, all data uploaded to bundlers will be migrated from testnet to mainnet, with no changes to transaction IDs.
 
 <Callout type="info" emoji="ℹ️">
-If you're not ready to migrate yet, you do not have to do anything. Irys's bundlers and gateway for Arweave will continue to operate as normal. 
+  If you're not ready to migrate yet, you do not have to do anything. Irys's
+  bundlers and gateway for Arweave will continue to operate as normal.
 </Callout>
 
 ## How to Migrate
@@ -28,30 +29,32 @@ Change This:
 import Irys from "@irys/sdk";
 
 const getIrys = async () => {
-	const irys = new Irys({
-		network: "mainnet", 
-		token: "ethereum",
-		key: process.env.PRIVATE_KEY, 
-	});
-	return irys;
+  const irys = new Irys({
+    network: "mainnet",
+    token: "ethereum",
+    key: process.env.PRIVATE_KEY,
+  });
+  return irys;
 };
 ```
 
 To This:
-
 
 ```ts
 import { Uploader } from "@irys/upload";
 import { Ethereum } from "@irys/upload-ethereum";
 
 const getIrysUploader = async () => {
-  const irysUploader = await Uploader(Ethereum).withWallet(process.env.PRIVATE_KEY);
+  const irysUploader = await Uploader(Ethereum).withWallet(
+    process.env.PRIVATE_KEY
+  );
   return irysUploader;
 };
 ```
 
-<Callout type="info" emoji="ℹ️"> 
-	The above code is for ethereum only, [we also have examples](/build/d/sdk/setup) covering all supported tokens.
+<Callout type="info" emoji="ℹ️">
+  The above code is for Ethereum only, [we also have
+  examples](/build/d/sdk/setup) covering all supported tokens.
 </Callout>
 
 ### Browser
@@ -63,13 +66,17 @@ import { WebIrys } from "@irys/sdk";
 import { ethers } from "ethers";
 
 const getWebIrys = async () => {
-	await window.ethereum.enable();
-	const provider = new providers.Web3Provider(window.ethereum);
-	const wallet = { rpcUrl: rpcUrl, name: "ethersv5", provider: provider };
-	const webIrys = new WebIrys({ network: "mainnet", token: "ethereum", wallet });
-	await webIrys.ready();
- 
-	return webIrys;
+  await window.ethereum.enable();
+  const provider = new providers.Web3Provider(window.ethereum);
+  const wallet = { rpcUrl: rpcUrl, name: "ethersv5", provider: provider };
+  const webIrys = new WebIrys({
+    network: "mainnet",
+    token: "ethereum",
+    wallet,
+  });
+  await webIrys.ready();
+
+  return webIrys;
 };
 ```
 
@@ -79,16 +86,20 @@ To This:
 import { WebUploader } from "@irys/web-upload";
 import { WebEthereum } from "@irys/web-upload-ethereum";
 import { EthereumEthersv5 } from "@irys/web-upload-ethereum-ethers-v5";
- 
+
 const getIrysUploader = async () => {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
-  const irysUploader = await WebUploader(WebEthereum).withProvider(EthereumEthersv5(provider));
+  const irysUploader = await WebUploader(WebEthereum).withProvider(
+    EthereumEthersv5(provider)
+  );
   return irysUploader;
 };
 ```
 
-<Callout type="info" emoji="ℹ️"> 
-	The above code is for ethereum with ethers v5 only, [we also have examples](/build/d/irys-in-the-browser) covering all supported tokens and providers.
+<Callout type="info" emoji="ℹ️">
+  The above code is for Ethereum with ethers v5 only, [we also have
+  examples](/build/d/irys-in-the-browser) covering all supported tokens and
+  providers.
 </Callout>
 
 ## Support

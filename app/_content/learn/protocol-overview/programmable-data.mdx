@@ -1,5 +1,5 @@
 ---
-description: Programmable data embeds logic into onchain assets, enabling automated, reliable execution for decentralized smart contracts. 
+description: Programmable data embeds logic into onchain assets, enabling automated, reliable execution for decentralized smart contracts.
 ---
 
 # Programmable Data
@@ -23,21 +23,20 @@ This structure allows precise targeting of data stored within Irys’s partition
 In addition, Programmable Data also offers *Byte Read Ranges*, which build on top of chunk read ranges to provide easy access to specific parts of a transaction's data.
 
 the format for a byte read range is:
+
 ```jsx
 <index>:<chunk_offset>:<byte_offset>:<length>
 ```
--
+
 - **partition_index**: (26 bytes) The index of the partition in the Publish Ledger containing the first chunk.
 - **offset**: (4 bytes) The starting chunk offset within the partition.
 - **chunk_count**: (2 bytes) The number of sequential chunks to retrieve starting from the offset.
-
-
 
 ## Pricing for Programmable Data
 
 ### Base Fee
 
-Unpacking and deserializing data for IrysVM incurs computational overhead, which is mitigated through a **base fee** to prevent spam. 
+Unpacking and deserializing data for IrysVM incurs computational overhead, which is mitigated through a **base fee** to prevent spam.
 
 During the testnet phase:
 
@@ -53,17 +52,13 @@ Dynamic pricing adjusts access costs to Irys’s data ledgers based on market de
 With testnet block times of **30 seconds**, the network can process up to **7,500 chunks per block** (at 250 chunks/second). Each chunk represents **256KiB of data**.
 
 - **Increase:**
-    
-    If more than **50%** of block capacity is used, the base fee scales linearly up to **+12.5%** when all **7,500 chunks** are consumed.
-    
+  If more than **50%** of block capacity is used, the base fee scales linearly up to **+12.5%** when all **7,500 chunks** are consumed.
+
 - **Decrease**:
 
-    If no chunks are used, the base fee decreases by up to **-12.5%** per block, with a **minimum floor of $0.01** and no upper limit.
-
-    
+  If no chunks are used, the base fee decreases by up to **-12.5%** per block, with a **minimum floor of $0.01** and no upper limit.
 
 This congestion pricing model avoids unpredictable spikes in costs, providing developers with **consistent economic efficiency**, even during peak demand.
-
 
 ## Data Availability & Synchronization
 
@@ -88,7 +83,6 @@ If a peer fails to receive chunks within a predefined propagation delay (**200ms
 The ledger identifies replicas, and the node randomly selects a partition for retrieval.
 
 This fallback ensures reliable access, even under heavy network demand.
-
 
 ## Verifying Data for Execution
 
