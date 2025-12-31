@@ -1,0 +1,1348 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ix="http://www.xbrl.org/2013/inlineXBRL" xmlns:mica="https://www.esma.europa.eu/taxonomy/2025-03-31/mica/" xmlns:ixt4="http://www.xbrl.org/inlineXBRL/transformation/2020-02-12" xmlns:utr="http://www.xbrl.org/2009/utr" xml:lang="en">
+  <head>
+    <title>
+      IRYS MiCAR White Paper
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <style type="text/css">
+
+      body {
+        background: linear-gradient(
+          90deg,
+          #51FFD650 0%,
+          #51FFD610 100%
+        );
+        color: black;
+        font-family: 'Inter', Arial, 'Times New Roman', Times, serif;
+        margin: 0;
+        line-height: 1.6;
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+
+      body,
+      table {
+        font-size: 16px;
+      }
+
+      p,
+      span,
+      div,
+      td,
+      th {
+        color: black;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: 'Inter', Arial, 'Times New Roman', Times, serif;
+        color: black;
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.3;
+        font-weight: bold;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        letter-spacing: -0.5px;
+      }
+
+      h2 {
+        font-size: 2rem;
+        letter-spacing: -0.3px;
+        border-bottom: 2px solid #000;
+        padding-bottom: 0.5rem;
+      }
+
+      .cover-title {
+        text-align: center;
+        color: black;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+
+      .section-title {
+        color: black;
+        font-size: 1.1em;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-weight: bold;
+      }
+
+      .cover-page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: linear-gradient(
+          135deg,
+          white 0%,
+          #00005 100%
+        );
+        padding: 4rem 2rem;
+        border: 1px solid #51FFD620;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px #00010;
+        margin: 2rem auto;
+        max-width: 210mm;
+      }
+
+      .logo {
+        max-width: 200px;
+        height: auto;
+        margin-bottom: 3rem;
+        filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+      }
+
+      .notification-date {
+        font-size: 1.2rem;
+        color: black;
+        margin-bottom: 3rem;
+        font-weight: 500;
+        opacity: 0.9;
+      }
+
+      .compliance-notice {
+        text-align: center;
+        margin-top: 4rem;
+        opacity: 0.7;
+      }
+
+      .compliance-notice p {
+        margin: 0.2rem 0;
+        font-size: 0.8rem;
+        color: #555;
+      }
+
+      .compliance-statements {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        background-color: #f5f5f7;
+        border-left: 4px solid #51FFD6;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: black;
+      }
+
+      .section {
+        background-color: white;
+        max-width: 210mm;
+        margin: 2rem auto;
+        padding: 2.5rem;
+        border: 1px solid #51FFD615;
+        border-radius: 12px;
+        box-shadow: 0 2px 4px #00000008;
+        scroll-margin-top: 2rem;
+      }
+
+      .section h2 {
+        color: black;
+        font-size: 1.4em;
+        font-weight: bold;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #00000020;
+        padding-bottom: 0.5rem;
+      }
+
+      .divider {
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          #00040 50%,
+          transparent 100%
+        );
+        margin: 2.5rem 0;
+        border: none;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+        background: white;
+        border: 1px solid black;
+        color: black;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        padding: 12px 15px;
+        color: black;
+      }
+
+      th {
+        background-color: #00010;
+        font-weight: 600;
+        text-align: left;
+      }
+
+      .toc {
+        margin: 2rem auto;
+        max-width: 210mm;
+        padding: 2.5rem;
+        background-color: white;
+        border: 1px solid #51FFD615;
+        border-radius: 12px;
+        box-shadow: 0 2px 4px #00008;
+      }
+
+      .toc ol {
+        list-style-type: none;
+        padding-left: 2rem;
+      }
+
+      .toc &gt; ol &gt; .toc-section-entry {
+        font-weight: bold;
+        margin: 1.2rem 0;
+      }
+
+      .toc .toc-section-entry ol {
+        list-style-type: none;
+        font-weight: normal;
+        padding-left: 20px;
+      }
+
+      .toc .toc-section-entry ol li {
+        margin: 0.5rem 0;
+      }
+
+      .toc a {
+        color: black;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .toc a:hover {
+        color: #000;
+        text-decoration: underline;
+      }
+
+      .warning-notice {
+        margin-top: 1rem;
+        background-color: #fafafa;
+        border-left: 4px solid #51FFD6;
+        padding: 1rem;
+      }
+
+      .compliance-card {
+        padding: 1rem;
+        background-color: #fafafa;
+        margin: 1rem 0;
+        border-left: 4px solid #000;
+      }
+
+
+      .item-entry {
+        margin: 0.8rem 0;
+        line-height: 1.6;
+      }
+
+      .item-title {
+        font-weight: bold;
+        color: black;
+        display: inline;
+      }
+
+      .toc-section-entry {
+        margin-top: 1.2rem;
+      }
+
+
+      .taxonomy-group {
+        margin-left: 1rem;
+        padding-left: 1rem;
+        border-left: 2px solid #f0f0f0;
+      }
+
+      @media print {
+        body {
+          background-color: white;
+        }
+
+        .section,
+        .cover-page {
+          box-shadow: none;
+          margin: 0;
+          padding: 2cm;
+          border: none;
+          background: none;
+        }
+
+        .divider {
+          background: #000;
+          opacity: 0.2;
+        }
+      }
+    </style>
+
+    
+  </head>
+
+  <body>
+    <div class="cover-page section">
+      
+      <img src="https://gmzkvmqnafyxuswejrll.supabase.co/storage/v1/object/public/micar-assets/organization_logos/irys.png" alt="Company Logo" class="logo"/>
+      
+      <h1 class="cover-title">
+        IRYS MiCAR White
+        Paper
+      </h1>
+      <div class="compliance-notice">
+        <p>IN ACCORDANCE WITH</p>
+        <p>TITLE II OF REGULATION (EU) 2023/1114</p>
+      </div>
+    </div>
+    <!-- Table of Contents -->
+    <div class="section toc">
+      <h2 class="section-title">Table of Contents</h2>
+      <ol>
+          
+        <li class="toc-section-entry" style="font-weight: bold; list-style: none">
+          <a href="#section-A">A. Information about the Person Seeking Admission to Trading</a>
+          <ol style="list-style-type: none; padding-left: 20px">
+                    
+            <li>
+              <a href="#Template_A1">A.1 Name</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_A2">A.2 Legal Form</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_A3">A.3 Registered address</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_A4">A.4 Head office</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_A5">A.5 Registration Date</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_A6">A.6 Legal entity identifier</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_A7">A.7 Another identifier required pursuant to applicable national law</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_A8">A.8 Contact telephone number</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_A9">A.9 E-mail address</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_A10">A.10 Response Time (Days)</a>
+            </li>
+                            
+            <li>
+              <a href="#Template_A12">A.12 Members of the Management body</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_A13">A.13 Business Activity</a>
+            </li>
+                            
+            <li>
+              <a href="#Template_A15">A.15 Newly Established</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_A17">A.17 Financial condition since registration</a>
+            </li>
+               
+          </ol>
+        </li>
+           
+        <li class="toc-section-entry" style="font-weight: bold; list-style: none">
+          <a href="#section-B">B. Information about the issuer, if different from the offeror or person seeking admission to trading</a>
+          <ol style="list-style-type: none; padding-left: 20px">
+                    
+            <li>
+              <a href="#Template_B1">B.1 Issuer Information</a>
+            </li>
+               
+          </ol>
+        </li>
+              
+        <li class="toc-section-entry" style="font-weight: bold; list-style: none">
+          <a href="#section-D">D. Information about the Crypto-Asset Project</a>
+          <ol style="list-style-type: none; padding-left: 20px">
+                    
+            <li>
+              <a href="#Template_D1">D.1 Crypto-asset project name</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_D2">D.2 Crypto-assets name</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_D3">D.3 Abbreviation</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_D4">D.4 Crypto-asset project description</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_D5">D.5 Details of all natural or legal persons
+involved in the implementation of the
+crypto-asset project</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_D6">D.6 Utility Token Classification</a>
+            </li>
+                            
+            <li>
+              <a href="#Template_D8">D.8 Plans for the token</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_D9">D.9 Resource Allocation</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_D10">D.10 Planned Use of Collected Funds or
+Crypto-Assets</a>
+            </li>
+               
+          </ol>
+        </li>
+           
+        <li class="toc-section-entry" style="font-weight: bold; list-style: none">
+          <a href="#section-E">E. Information about the Admission to Trading</a>
+          <ol style="list-style-type: none; padding-left: 20px">
+                    
+            <li>
+              <a href="#Template_E1">E.1 Public Offering or Admission to trading</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_E2">E.2 Reasons for Public Offer or Admission to
+trading</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_E12">E.12 Total Number of Offered/Traded Crypto-
+Assets</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_E13">E.13 Targeted Holders</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_E14">E.14 Holder restrictions</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_E24">E.24 Payment Methods for Crypto-Asset
+Purchase</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_E25">E.25 Value Transfer Methods for Reimbursement</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_E27">E.27 Transfer of Purchased Crypto-Assets</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_E29">E.29 Purchaser's Technical Requirements</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_E33">E.33 Trading Platforms name</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_E34">E.34 Trading Platforms Market Identifier Code (MIC)</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_E35">E.35 Trading Platforms Access</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_E36">E.36 Involved costs</a>
+            </li>
+                            
+            <li>
+              <a href="#Template_E38">E.38 Conflicts of Interest</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_E39">E.39 Applicable law</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_E40">E.40 Competent court</a>
+            </li>
+               
+          </ol>
+        </li>
+           
+        <li class="toc-section-entry" style="font-weight: bold; list-style: none">
+          <a href="#section-F">F. Information about the Crypto-Assets</a>
+          <ol style="list-style-type: none; padding-left: 20px">
+                    
+            <li>
+              <a href="#Template_F1">F.1 Crypto-Asset Type</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_F2">F.2 Crypto-Asset Functionality</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_F3">F.3 Planned Application of Functionalities</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_F4">F.4 Type of white paper</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_F5">F.5 The type of submission</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_F6">F.6 Crypto-Asset Characteristics</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_F7">F.7 Commercial name or trading name</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_F8">F.8 Website of the issuer</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_F9">F.9 Starting date of offer to the public or
+admission to trading</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_F10">F.10 Publication date</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_F11">F.11 Any other services provided by the
+issuer</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_F12">F.12 Language or languages of the white paper</a>
+            </li>
+                                 
+            <li>
+              <a href="#Template_F15">F.15 Voluntary data flag</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_F16">F.16 Personal data flag</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_F17">F.17 LEI eligibility</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_F18">F.18 Home Member State</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_F19">F.19 Host Member States</a>
+            </li>
+               
+          </ol>
+        </li>
+           
+        <li class="toc-section-entry" style="font-weight: bold; list-style: none">
+          <a href="#section-G">G. Information on the rights and obligations attached to the crypto-assets</a>
+          <ol style="list-style-type: none; padding-left: 20px">
+                    
+            <li>
+              <a href="#Template_G1">G.1 Purchaser Rights and Obligations</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_G2">G.2 Exercise of Rights and Obligations</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_G3">G.3 Conditions for Modifications of Rights and Obligations</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_G4">G.4 Future Public Offers</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_G5">G.5 Number of Issuer's Retained Crypto-Assets</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_G6">G.6 Utility Token Classification</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_G9">G.9 Non-Trading Request</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_G11">G.11 Crypto-Assets Transfer Restrictions</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_G12">G.12 Supply Adjustment Protocols</a>
+            </li>
+                            
+            <li>
+              <a href="#Template_G14">G.14 Token Value Protection Schemes</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_G16">G.16 Compensation Schemes</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_G18">G.18 Applicable Law</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_G19">G.19 Competent Court</a>
+            </li>
+               
+          </ol>
+        </li>
+           
+        <li class="toc-section-entry" style="font-weight: bold; list-style: none">
+          <a href="#section-H">H. Information on the Underlying Technology</a>
+          <ol style="list-style-type: none; padding-left: 20px">
+                    
+            <li>
+              <a href="#Template_H1">H.1 Distributed Ledger Technology</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_H2">H.2 Protocols and Technical Standards</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_H3">H.3 Technology Used</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_H4">H.4 Consensus Mechanism</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_H5">H.5 Incentive Mechanisms and Applicable Fees</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_H6">H.6 Use of Distributed Ledger Technology</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_H7">H.7 DLT Functionality Description</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_H8">H.8 Audit</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_H9">H.9 Audit Outcome</a>
+            </li>
+               
+          </ol>
+        </li>
+           
+        <li class="toc-section-entry" style="font-weight: bold; list-style: none">
+          <a href="#section-I">I. Information on Risks</a>
+          <ol style="list-style-type: none; padding-left: 20px">
+                    
+            <li>
+              <a href="#Template_I1">I.1 Offer-Related Risks</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_I2">I.2 Issuer-Related Risks</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_I3">I.3 Crypto-Assets-Related Risks</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_I4">I.4 Project Implementation-Related Risks</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_I5">I.5 Technology-Related Risks</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_I6">I.6 Mitigation Measures</a>
+            </li>
+               
+          </ol>
+        </li>
+           
+        <li class="toc-section-entry" style="font-weight: bold; list-style: none">
+          <a href="#section-J">J. Information on the sustainability indicators in relation to adverse impact on the climate and other environment-related adverse impacts</a>
+          <ol style="list-style-type: none; padding-left: 20px">
+                    
+            <li>
+              <a href="#Template_J1">J.1 Adverse impacts on climate and other environment-related adverse impacts</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_S1">S.1 Name</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_S2">S.2 Relevant legal entity identifier</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_S3">S.3 Name of the crypto-asset</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_S4">S.4 Consensus mechanism</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_S5">S.5 Incentive mechanisms and applicable fees</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_S6">S.6 Beginning of the period to which the disclosure relates</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_S7">S.7 End of the period to which the disclosure relates</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_S8">S.8 Energy consumption</a>
+            </li>
+                       
+            <li>
+              <a href="#Template_S9">S.9 Energy consumption sources and methodologies</a>
+            </li>
+                                                                                                                                                      
+          </ol>
+        </li>
+         
+      </ol>
+    </div>
+
+    <div class="divider"/>
+
+    <div class="section">
+      <div class="item-entry">
+        <span class="item-title">00. Table of content:</span>
+        <ix:nonNumeric name="mica:TableOfContentForOtherTokenWhitePaper" contextRef="_ctx1" id="Template_N00" format="ixt4:fixed-true" escape="false" xml:lang="en">true</ix:nonNumeric>
+      </div>
+      <div class="item-entry">
+        <span class="item-title">01. Date of Notification:</span>
+        <ix:nonNumeric name="mica:DateOfNotificationForOtherTokenWhitePaper" contextRef="_ctx_inst_notification" id="TEMPLATE_I_01_Date_of_notification" escape="false" xml:lang="en">2025-11-27</ix:nonNumeric>
+      </div>
+      <h2 class="section-title">Regulatory Disclosures</h2>
+
+      <div class="item-entry">
+        <span class="item-title">02. Statement in accordance with Article 6(3) of Regulation (EU)
+          2023/1114:</span>
+        <div class="compliance-card">
+          <ix:nonNumeric name="mica:StatementEnsuringComplianceWithUnderlyingRegulation" contextRef="_ctx1" id="Template_N02" format="ixt4:fixed-true" escape="false" xml:lang="en">
+            This crypto-asset white paper has not been approved by any competent
+            authority in any Member State of the European Union. The person seeking admission to
+            trading of the crypto-asset is solely responsible for the content
+            of this crypto-asset white paper.
+          </ix:nonNumeric>
+        </div>
+      </div>
+
+      <div class="item-entry">
+        <span class="item-title">03. Compliance statement in accordance with Article 6(6) of
+          Regulation (EU) 2023/1114</span>
+        <div class="compliance-card">
+          <ix:nonNumeric name="mica:ComplianceStatementAboutManagementConfirmation" contextRef="_ctx1" id="Template_N03" format="ixt4:fixed-true" escape="false" xml:lang="en">
+            This crypto-asset white paper complies with Title II of Regulation (EU) 2023/1114 of the European Parliament and of the Council and, to the best of the knowledge of the management body, the information presented in the crypto-asset white paper is fair, clear and not misleading and the crypto-asset white paper makes no omission likely to affect its import.
+          </ix:nonNumeric>
+        </div>
+      </div>
+
+      <div class="item-entry">
+        <span class="item-title">04. Statement in accordance with Article 6(5), points (a), (b),
+          (c):</span>
+        <div class="compliance-card">
+          <ix:nonNumeric name="mica:StatementAboutPotentialRisks" contextRef="_ctx1" id="Template_N04" format="ixt4:fixed-true" escape="false" xml:lang="en">
+            The crypto-asset referred to in this white paper may lose its value in
+            part or in full, may not always be transferable and may not be liquid.
+          </ix:nonNumeric>
+        </div>
+      </div>
+
+      
+
+      <div class="item-entry">
+        <span class="item-title">06. Statement in accordance with Article 6(5), points (e) and
+          (f):</span>
+        <div class="compliance-card">
+          <ix:nonNumeric name="mica:StatementAboutCompensationAndGuaranteeForOtherToken" contextRef="_ctx1" id="Template_N06" format="ixt4:fixed-true" escape="false" xml:lang="en">
+            The crypto-asset referred to in this white paper is not covered by the
+            investor compensation schemes under Directive 97/9/EC of the European
+            Parliament and of the Council. The crypto-asset referred to in this
+            white paper is not covered by the deposit guarantee schemes under
+            Directive 2014/49/EU of the European Parliament and of the Council.
+          </ix:nonNumeric>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"/>
+
+    <div class="section">
+      <h2 class="section-title">Summary</h2>
+
+      <div class="item-entry">
+        <span class="item-title">07. Warning in accordance with Article 6(7), second subparagraph, of
+          Regulation (EU) 2023/1114:</span>
+        <div class="warning-notice">
+          <ix:nonNumeric name="mica:ClarificationRegardingOtherTokenOfferTerms" contextRef="_ctx1" id="Template_N07" format="ixt4:fixed-true" escape="false" xml:lang="en">
+            This summary should be read as an introduction to the crypto-asset
+            white paper. The prospective holder should base any decision to
+            purchase this crypto-asset on the content of the crypto-asset white
+            paper as a whole and not on the summary alone. The offer to the public
+            of this crypto-asset does not constitute an offer or solicitation to
+            purchase financial instruments and any such offer or solicitation can
+            be made only by means of a prospectus or other offer documents
+            pursuant to the applicable national law. This crypto-asset white paper
+            does not constitute a prospectus as referred to in Regulation (EU)
+            2017/1129 of the European Parliament and of the Council (36) or any
+            other offer document pursuant to Union or national law.
+          </ix:nonNumeric>
+        </div>
+      </div>
+
+      <div class="item-entry">
+        <span class="item-title">08. Characteristics of the Crypto-Asset</span>
+        <ix:nonNumeric name="mica:DescriptionOfCharacteristicsOfOtherTokenExplanatory" contextRef="_ctx1" id="Template_N08" escape="true" xml:lang="en">
+          The IRYS token grants holders the right to vote on protocol proposals, including technical upgrades, treasury fund allocations, and network parameter adjustments, with voting weight proportional to their token holdings. There are no mandatory obligations for purchasers. Governance rights are exercised by creating and voting on proposals through a designated website. Any modifications to these rights require a proposal passed by a majority vote (50%+1) of participating token holders, with implementation carried out by an independent committee of Foundation and token holder representatives.
+        </ix:nonNumeric>
+      </div>
+
+
+      <div class="item-entry">
+        <span class="item-title">10. Key Information About the Offer to the Public or Admission to Trading</span>
+        <ix:nonNumeric name="mica:OfferDescriptionExplanatory" contextRef="_ctx1" id="Template_N10" escape="true" xml:lang="en">
+          No public offer of IRYS tokens is being made in connection with this disclosure. This white paper concerns the admission to trading for the IRYS token, which is an existing asset. Accordingly, there is no associated fundraising activity, subscription period, or issue price.
+      <br/>
+      <br/>
+Admission to trading is being sought to provide the opportunity for the IRYS token to be traded on regulated and transparent venues within the European Union. The platforms for which admission is sought include Kraken, OKX, Bitpanda, Bitvavo, and Revolut. No crypto-asset service provider has been appointed to place the token.
+        </ix:nonNumeric>
+      </div>
+    </div>
+
+    <div class="divider"/>
+
+    <div class="section" id="section-A">
+      <h2 class="section-title">
+        A. Information about Offeror or Person Seeking Admission to Trading
+      </h2>
+
+        <div class="item-entry" id="Template_A1"><span class="item-title">A.1 Name:</span> <ix:nonNumeric name="mica:NameOfOtherTokenOfferor" contextRef="_ctx1" id="Template_A1_ctx1" escape="false" xml:lang="en">IRYS Foundation		</ix:nonNumeric></div>
+<div class="item-entry" id="Template_A2"><span class="item-title">A.2 Legal Form:</span> <ix:nonNumeric name="mica:OfferorsLegalForm" contextRef="_ctx1" id="Template_A2_ctx1" escape="false" xml:lang="en">4XP8</ix:nonNumeric></div>
+<div class="item-entry" id="Template_A3"><span class="item-title">A.3 Registered address:</span> <div>
+    <div>
+        <ix:nonNumeric name="mica:OfferorsRegisteredAddress" contextRef="_ctx1" id="Template_A3_address" escape="false" xml:lang="en">
+            Metabase58 Cayman Limited of PO Box 10035, George Town, KY1-1001 Cayman Islands		
+        </ix:nonNumeric>
+    </div>
+    <div>
+        <div style="-ix-hidden:hidden_Template_A3_country;">KY</div>
+    </div>
+    <div>
+        <ix:nonNumeric name="mica:OfferorsRegisteredCountrySubdivision" contextRef="_ctx1" id="Template_A3_subdivision" escape="false" xml:lang="en">
+            No subdivision available
+        </ix:nonNumeric>
+    </div>
+</div></div>
+<div class="item-entry" id="Template_A4"><span class="item-title">A.4 Head office:</span> <div>
+    <div>
+        <ix:nonNumeric name="mica:OfferorsHeadOffice" contextRef="_ctx1" id="Template_A4_address" escape="false" xml:lang="en">
+            Metabase58 Cayman Limited of PO Box 10035, George Town, KY1-1001 Cayman Islands		
+        </ix:nonNumeric>
+    </div>
+    <div>
+        <div style="-ix-hidden:hidden_Template_A4_country;">KY</div>
+    </div>
+    <div>
+        <ix:nonNumeric name="mica:OfferorsHeadOfficeCountrySubdivision" contextRef="_ctx1" id="Template_A4_subdivision" escape="false" xml:lang="en">
+            No subdivision available
+        </ix:nonNumeric>
+    </div>
+</div></div>
+<div class="item-entry" id="Template_A5"><span class="item-title">A.5 Registration Date:</span> <ix:nonNumeric name="mica:OfferorsRegistrationDate" contextRef="_ctx1" id="Template_A5_date" format="ixt:dateyearmonthday" escape="false" xml:lang="en">2025-02-02</ix:nonNumeric></div>
+<div class="item-entry" id="Template_A7"><span class="item-title">A.7 Another identifier required pursuant to applicable national law:</span> <ix:nonNumeric name="mica:OfferorsAnotherIdentifierRequiredPursuantToApplicableNationalLaw" contextRef="_ctx1" id="Template_A7_ctx1" escape="false" xml:lang="en">418269</ix:nonNumeric></div>
+<div class="item-entry" id="Template_A8"><span class="item-title">A.8 Contact telephone number:</span> <ix:nonNumeric name="mica:OfferorsContactTelephoneNumber" contextRef="_ctx1" id="Template_A8_ctx1" escape="false" xml:lang="en">+442074676362</ix:nonNumeric></div>
+<div class="item-entry" id="Template_A9"><span class="item-title">A.9 E-mail address:</span> <ix:nonNumeric name="mica:OfferorsEmailAddress" contextRef="_ctx1" id="Template_A9_ctx1" escape="false" xml:lang="en">foundation@irys.xyz</ix:nonNumeric></div>
+<div class="item-entry" id="Template_A10"><span class="item-title">A.10 Response Time (Days):</span> <ix:nonFraction name="mica:OfferorsResponseTimeDays" contextRef="_ctx1" id="Template_A10_fact" decimals="0" scale="0" format="ixt4:num-comma-decimal" unitRef="pure">10</ix:nonFraction></div>
+<div class="item-entry" id="Template_A11"><span class="item-title">A.11 Parent Company:</span> <ix:nonNumeric name="mica:IdentificationOfOfferorsParentCompany" contextRef="_ctx1" id="Template_A11_ctx1" escape="false" xml:lang="en">N/A</ix:nonNumeric></div>
+<div class="item-entry" id="Template_A12"><span class="item-title">A.12 Members of the Management body:</span> 
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Business Address</th>
+                    <th>Function</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <ix:nonNumeric name="mica:IdentityOfOfferorsManagementBodyMemberForOtherToken" contextRef="ctx_mgmt_offeror_1" id="mgmt_offeror_1_identity" escape="false" xml:lang="en">
+                            MetaBase58 Cayman Limited
+                        </ix:nonNumeric>
+                    </td>
+                    <td>
+                        <ix:nonNumeric name="mica:BusinessAddressOfOfferorsManagementBodyMemberForOtherToken" contextRef="ctx_mgmt_offeror_1" id="mgmt_offeror_1_address" escape="false" xml:lang="en">
+                            P.O. Box 10035 3rd Floor, Athena Tower 71 Fort Street George Town Grand Cayman Cayman Islands KY1-1001
+                        </ix:nonNumeric>
+                    </td>
+                    <td>
+                        <ix:nonNumeric name="mica:FunctionOfOfferorsManagementBodyMemberForOtherToken" contextRef="ctx_mgmt_offeror_1" id="mgmt_offeror_1_function" escape="false" xml:lang="en">
+                            Secretary
+                        </ix:nonNumeric>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <ix:nonNumeric name="mica:IdentityOfOfferorsManagementBodyMemberForOtherToken" contextRef="ctx_mgmt_offeror_2" id="mgmt_offeror_2_identity" escape="false" xml:lang="en">
+                            Paul Parker
+                        </ix:nonNumeric>
+                    </td>
+                    <td>
+                        <ix:nonNumeric name="mica:BusinessAddressOfOfferorsManagementBodyMemberForOtherToken" contextRef="ctx_mgmt_offeror_2" id="mgmt_offeror_2_address" escape="false" xml:lang="en">
+                            P.O. Box 10035 3rd Floor, Athena Tower 71 Fort Street George Town Grand Cayman Cayman Islands KY1-1001
+                        </ix:nonNumeric>
+                    </td>
+                    <td>
+                        <ix:nonNumeric name="mica:FunctionOfOfferorsManagementBodyMemberForOtherToken" contextRef="ctx_mgmt_offeror_2" id="mgmt_offeror_2_function" escape="false" xml:lang="en">
+                            Supervisor
+                        </ix:nonNumeric>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <ix:nonNumeric name="mica:IdentityOfOfferorsManagementBodyMemberForOtherToken" contextRef="ctx_mgmt_offeror_3" id="mgmt_offeror_3_identity" escape="false" xml:lang="en">
+                            Marc Piano
+                        </ix:nonNumeric>
+                    </td>
+                    <td>
+                        <ix:nonNumeric name="mica:BusinessAddressOfOfferorsManagementBodyMemberForOtherToken" contextRef="ctx_mgmt_offeror_3" id="mgmt_offeror_3_address" escape="false" xml:lang="en">
+                            P.O. Box 31489 c/o Horizons Global SEZC Whitehall Chambers, 2nd Floor Whitehall House, 238 North Church Street George Town, Grand Cayman Cayman Islands KY1-1206
+                        </ix:nonNumeric>
+                    </td>
+                    <td>
+                        <ix:nonNumeric name="mica:FunctionOfOfferorsManagementBodyMemberForOtherToken" contextRef="ctx_mgmt_offeror_3" id="mgmt_offeror_3_function" escape="false" xml:lang="en">
+                            Director
+                        </ix:nonNumeric>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+<div class="item-entry" id="Template_A13"><span class="item-title">A.13 Business Activity:</span> <ix:nonNumeric name="mica:OfferorsBusinessActivityExplanatory" contextRef="_ctx1" id="Template_A13_ctx1" escape="true" xml:lang="en"><p>The Foundation aims to further initiatives that serve to widen the reach of the Irys network, reducing crypto’s reliance on centralized data storage and fragmented developer experiences. This entity itself will fund further development of the network, while also covering expenses associated with infrastructure costs, risk assessments, audits and more. </p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_A14"><span class="item-title">A.14 Parent Company Business Activity:</span> <ix:nonNumeric name="mica:ParentCompanyBusinessActivityOfOfferorSideExplanatory" contextRef="_ctx1" id="Template_A14_ctx1" escape="true" xml:lang="en">N/A</ix:nonNumeric></div>
+<div class="item-entry" id="Template_A15"><span class="item-title">A.15 Newly Established:</span> <ix:nonNumeric name="mica:NewlyEstablishedOfferorsIndicator" contextRef="_ctx1" id="Template_A15_fact" escape="false" xml:lang="en">false</ix:nonNumeric></div>
+<div class="item-entry" id="Template_A17"><span class="item-title">A.17 Financial condition since registration:</span> <ix:nonNumeric name="mica:InformationAboutOfferorsFinancialConditionSinceRegistrationExplanatory" contextRef="_ctx1" id="Template_A17_ctx1" escape="true" xml:lang="en"><p>$20M raised across 4 rounds with participation from Coinfund, Hypersphere, Framework, Lemniscap, Primitive Ventures, Permanent Ventures, Echo Group and others.</p><p>Angel participation from Smokey the Bera, David Phelps, Nader Dabit, Chase Chapman, Ryan Watkins, Daniel Cheung, and others.</p><p>The foundation and issuer have been funded by promissory notes from a third party aligned with the foundation's objectives.<br/><br/>10 months to date of the foundation:</p><p>Income: $ -<br/>Administration Costs: $ 184,000<br/>Assets: $ 136,000<br/>Liabilities: $ 320,000</p><p/></ix:nonNumeric></div>                    
+    </div>
+
+    <div class="divider"/>
+
+         
+    <div class="section" id="section-B">
+      <h2 class="section-title">
+        B. Information about Issuer (If Different from Offeror or Person Seeking
+        Admission to Trading)
+      </h2>
+      <div class="item-entry" id="Template_B1"><span class="item-title">B.1 Issuer Information:</span> <ix:nonNumeric name="mica:IssuerDifferentFromOfferrorOrPersonSeekingAdmissionToTrading" contextRef="_ctx1" id="Template_B1_fact" escape="false" xml:lang="en">false</ix:nonNumeric></div>
+    </div>
+    <div class="divider"/>
+                                              
+
+    <div class="section" id="section-D">
+      <h2 class="section-title">D. Information about Crypto-Asset Project</h2>
+
+              <div class="item-entry" id="Template_D1"><span class="item-title">D.1 Crypto-asset project name:</span> <ix:nonNumeric name="mica:NameOfOtherTokenProject" contextRef="_ctx1" id="Template_D1_ctx1" escape="false" xml:lang="en">IRYS</ix:nonNumeric></div>
+<div class="item-entry" id="Template_D2"><span class="item-title">D.2 Crypto-assets name:</span> <ix:nonNumeric name="mica:NameOfOtherToken" contextRef="_ctx1" id="Template_D2_ctx1" escape="false" xml:lang="en">IRYSToken</ix:nonNumeric></div>
+<div class="item-entry" id="Template_D3"><span class="item-title">D.3 Abbreviation:</span> <ix:nonNumeric name="mica:OtherTokenProjectAbbreviation" contextRef="_ctx1" id="Template_D3_ctx1" escape="false" xml:lang="en">IRYS</ix:nonNumeric></div>
+<div class="item-entry" id="Template_D4"><span class="item-title">D.4 Crypto-asset project description:</span> <ix:nonNumeric name="mica:DescriptionOfOtherTokenProjectExplanatory" contextRef="_ctx1" id="Template_D4_ctx1" escape="true" xml:lang="en"><p><strong>Irys is a Layer-1 Datachain That Unlocks the Value of Data—letting you store, use, and monetize your AI and IP data.</strong></p><p><strong>The Irys token has three uses:</strong></p><p><strong>Fees: </strong>Fees are charged on all network operations, including payment for data storage and protocol execution. Unlike other datachains, both temporary and permanent data storage fees are pegged to a USD range and updated on a yearly basis.</p><p><strong>Security:</strong> Token rewards are used to incentivize node validators contributing to Irys consensus and to prevent spam and denial-of-service attacks.</p><p><strong>Staking: </strong>Miners must lock $IRYS tokens as collateral, signaling their commitment to the network and creating clear economic consequences for failing to uphold their responsibilities. Users will also be able to delegate $IRYS tokens in order to passively participate in contributing to the network’s security model.</p><p>Irys is purpose built to solve for the following issues:</p><p><strong>1. Storage is expensive and unpredictable</strong></p><p>On other datachains, storing data is expensive and pricing swings with token volatility.</p><p>Irys fixes this with stable pricing tied to actual hard drive costs, making it 10–20x cheaper than alternatives. Additionally, our pricing algorithm makes sure the price of storage is fixed, eliminating the pain point of unreliable budgeting for data storage.</p><p><strong>2. Intellectual property is being stolen by AI, and value is taken from end users</strong></p><p>Creators lose control when their work is scraped, remixed, and monetized without permission. The rise of AI has only accelerated the amount of value that is lost every day, as outdated IP regulations and infrastructure have not caught up with innovation. Users capture none of this value.</p><p>Irys fixes this by allowing creators to embed licensing rules, enforce attribution, and through Programmable Data, they can get paid automatically each time their Irys-registered IP is used. This is all done entirely onchain.</p><p><strong>3. Training data is low-quality and there is no price discovery due to data siloes</strong></p><p>AI models are only as good as their data, but most data isn’t actually reachable for AI companies, as there’s no global marketplace for companies to find buyers for their data.</p><p>Irys fixes this by enabling incentivized curation and direct monetization of high-quality datasets. This is another outcome of our flagship “Programmable Data” feature. Also, see Brickroad, an ecosystem project building a native data marketplace on Irys.</p><p><strong>4. AI agents can’t coordinate or consistently remember historical actions and queries</strong></p><p>AI agents work in walled-in gardens. They lack shared memory, can’t verify each other’s tasks, and struggle to collaborate.</p><p>Irys fixes this by giving agents a shared, verifiable memory layer. Agents can discover each other, track results/tasks, and collaborate together on more advanced functions. We see this becoming especially useful as AI frameworks progress into specialized niches/verticals."</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_D5"><span class="item-title">D.5 Details of all natural or legal persons
+involved in the implementation of the
+crypto-asset project:</span> 
+        <table>
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Business Address</th>
+                    <th>Domicile</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span style="-ix-hidden:persons_1_type_hidden;">Other</span>
+                    </td>
+                    <td>
+                        <ix:nonNumeric name="mica:NameOfPersonInvolvedInImplementationOfOtherToken" contextRef="ctx_persons_1" id="persons_1_name" escape="false" xml:lang="en">
+                            The IRYS Foundation
+                        </ix:nonNumeric>
+                    </td>
+                    <td>
+                        <ix:nonNumeric name="mica:BusinessAddressOfPersonInvolvedInImplementationOfOtherToken" contextRef="ctx_persons_1" id="persons_1_address" escape="false" xml:lang="en">
+                            Metabase58 Cayman Limited of PO Box 10035, George Town, KY1-1001 Cayman Islands		
+                        </ix:nonNumeric>
+                    </td>
+                    <td>
+                        <span style="-ix-hidden:persons_1_domicile_hidden;">KY</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+<div class="item-entry" id="Template_D6"><span class="item-title">D.6 Utility Token Classification:</span> <ix:nonNumeric name="mica:UtilityTokenClassificationForOtherTokenProjectIndicator" contextRef="_ctx1" id="Template_D6_fact" escape="false" xml:lang="en">false</ix:nonNumeric></div>
+<div class="item-entry" id="Template_D7"><span class="item-title">D.7 Key Features of Goods/Services for
+Utility Token Projects:</span> <ix:nonNumeric name="mica:KeyFeaturesOfGoodsOrServicesForUtilityTokenProjectsExplanatory" contextRef="_ctx1" id="Template_D7_ctx1" escape="true" xml:lang="en">N/A</ix:nonNumeric></div>
+<div class="item-entry" id="Template_D8"><span class="item-title">D.8 Plans for the token:</span> <div><strong>Past Milestones:</strong><br/><ix:nonNumeric name="mica:DescriptionOfPastMilestonesExplanatory" contextRef="_ctx1" id="Template_D8_Past_ctx1" escape="true" xml:lang="en"><p>Historical Development and Milestones split out by years achieved</p><p><strong>2025</strong></p><p>January:</p><ul class="list-disc pl-4"><li><p>Scope Rust codebase rewrite (initially written in Erlang) - Finished</p></li></ul><p>February</p><ul class="list-disc pl-4"><li><p>Deploy Single-Node Testnet - Finished</p></li><li><p>Difficulty calculations &amp; tests - Finished</p></li></ul><p>March</p><ul class="list-disc pl-4"><li><p>Implement multi-node gossip &amp; testing framework - Finished</p></li></ul><p>April</p><ul class="list-disc pl-4"><li><p>Finalize Reth integration strategy - Finished</p></li><li><p>Implement peer staking &amp; pledging - Finished</p></li><li><p>Multi-node peer validation tests - Finished</p></li></ul><p>May</p><ul class="list-disc pl-4"><li><p>Deploy multiple peers on testnet - Finished</p></li><li><p>Implement emissions curve &amp; block rewards - Finished</p></li><li><p>Develop fork recovery tests - In Progress</p></li></ul><p>June</p><ul class="list-disc pl-4"><li><p>Continue MVP Consensus (fork recovery, epoch service, mempool service, transaction validation) - Finished</p></li><li><p>Testnet restart tooling (genesis node restart &amp; synchronization) - Finished</p></li></ul><p>July</p><ul class="list-disc pl-4"><li><p>Round out fork/reorg test suite - Finished</p></li><li><p>Address audit feedback (difficulty adjustments) - Finished</p></li></ul><p>August</p><ul class="list-disc pl-4"><li><p>Deploy Data Sync - Finished</p></li><li><p>Deploy multiple testnet miners - Finished</p></li><li><p>Ingress Proof gossip and consensus - Finished</p></li></ul><p>September</p><ul class="list-disc pl-4"><li><p>Mainnet Packing / hashing parameters - Finished</p></li><li><p>Mempool validation pathways - Finished</p></li></ul><p>October: </p><ul class="list-disc pl-4"><li><p>Packing / Unpacking Service Improvements - Finished</p></li><li><p>Programmable Data Pricing - Finished</p></li><li><p>Onboard network miners - Finished</p></li></ul></ix:nonNumeric></div><div><strong>Future Milestones:</strong><br/><ix:nonNumeric name="mica:DescriptionOfFutureMilestonesExplanatory" contextRef="_ctx1" id="Template_D8_Future_ctx1" escape="true" xml:lang="en"><p><strong>2025 Q4</strong></p><ul class="list-disc pl-4"><li><p>Launch Irys wallet &amp; tooling</p></li><li><p>Build S3-API &amp; developer tools</p></li><li><p>Launch mainnet &amp; TGE</p></li><li><p>Launch Brickroad data marketplace</p></li></ul><p><strong>2026 Q1</strong></p><ul class="list-disc pl-4"><li><p>Reduce blocktimes</p></li><li><p>Enhance wallet features</p></li><li><p>Implement additional storage terms</p></li></ul><p><strong>2026 Q2</strong></p><ul class="list-disc pl-4"><li><p>Further reduce blocktimes</p></li><li><p>Enhance wallet features</p></li><li><p>Implement additional storage terms</p></li><li><p>Migration to BFT-based PoW</p></li></ul></ix:nonNumeric></div></div>
+<div class="item-entry" id="Template_D9"><span class="item-title">D.9 Resource Allocation:</span> <ix:nonNumeric name="mica:ResourceAllocationExplanatory" contextRef="_ctx1" id="Template_D9_ctx1" escape="true" xml:lang="en"><p>N/A</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_D10"><span class="item-title">D.10 Planned Use of Collected Funds or
+Crypto-Assets:</span> <ix:nonNumeric name="mica:PlannedUseOfCollectedFundsOrOtherTokensExplanatory" contextRef="_ctx1" id="Template_D10_ctx1" escape="true" xml:lang="en"><p>N/A</p></ix:nonNumeric></div>              
+    </div>
+
+    <div class="divider"/>
+
+    <div class="section" id="section-E">
+      <h2 class="section-title">
+        E. Information on Offer to Public of Crypto-Assets or their Admission to
+        Trading
+      </h2>
+
+                <div class="item-entry" id="Template_E1"><span class="item-title">E.1 Public Offering or Admission to trading:</span> <div style="-ix-hidden:hidden_Template_E1;">ATTR</div></div>
+<div class="item-entry" id="Template_E2"><span class="item-title">E.2 Reasons for Public Offer or Admission to
+trading:</span> <ix:nonNumeric name="mica:ReasonsForPublicOfferOrAdmissionToTradingExplanatory" contextRef="_ctx1" id="Template_E2_ctx1" escape="true" xml:lang="en"><p>Opportunity to trade IRYS Token on regulated and transparent trading venues within the European Union ensuring sufficient liquidity and price discovery mechanisms for the IRYS token through regulated exchanges enabling broader participation in the IRYS ecosystem through established and compliant trading platforms facilitating secure and regulated access to the IRYS token for ecosystem participants, including developers, users, and governance participants.</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_E12"><span class="item-title">E.12 Total Number of Offered/Traded Crypto-
+Assets:</span> <ix:nonFraction name="mica:TotalNumberOfOfferedOrTradedOtherTokens" contextRef="inst_Template_E12" id="Template_E12_fact" decimals="0" scale="0" format="ixt4:num-comma-decimal" unitRef="pure" xml:lang="en">10000000000</ix:nonFraction></div>
+<div class="item-entry" id="Template_E13"><span class="item-title">E.13 Targeted Holders:</span> <div style="-ix-hidden:hidden_Template_E13_set;">ALL</div></div>
+<div class="item-entry" id="Template_E14"><span class="item-title">E.14 Holder restrictions:</span> <ix:nonNumeric name="mica:HolderRestrictionsExplanatory" contextRef="_ctx1" id="Template_E14_ctx1" escape="true" xml:lang="en"><p>Targeted holders include all types of investors, subject to the following restrictions:</p><p><strong>Geographic Restrictions:</strong></p><p>a. Not available to persons or entities in sanctioned jurisdictions</p><p>b. Not available to persons or entities on OFAC restricted lists or similar applicable sanctions lists</p><p>c. Not available to persons or entities in US and other jurisdictions as defined at time of the tokens admission to trading</p><p>d. Must comply with all applicable local regulations in their jurisdiction</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_E24"><span class="item-title">E.24 Payment Methods for Crypto-Asset
+Purchase:</span> <ix:nonNumeric name="mica:PaymentMethodsForOtherTokenPurchaseExplanatory" contextRef="_ctx1" id="Template_E24_ctx1" escape="true" xml:lang="en"><p>Payments may be made in supported cryptocurrencies (e.g., USDT, USDC, ETH) and, where applicable, via fiat currency through approved payment channels.</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_E25"><span class="item-title">E.25 Value Transfer Methods for Reimbursement:</span> <ix:nonNumeric name="mica:ValueTransferMethodsForReimbursementExplanatory" contextRef="_ctx1" id="Template_E25_ctx1" escape="true" xml:lang="en"><p>N/A</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_E27"><span class="item-title">E.27 Transfer of Purchased Crypto-Assets:</span> <ix:nonNumeric name="mica:TransferOfPurchasedOtherTokensExplanatory" contextRef="_ctx1" id="Template_E27_ctx1" escape="true" xml:lang="en"><p>Tokens will be transferred directly to the purchaser’s registered wallet address on the supported blockchain network after confirmation of payment</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_E29"><span class="item-title">E.29 Purchaser's Technical Requirements:</span> <ix:nonNumeric name="mica:PurchasersTechnicalRequirementsExplanatory" contextRef="_ctx1" id="Template_E29_ctx1" escape="true" xml:lang="en"><p>Purchasers must have a compatible blockchain wallet that supports the token’s network.</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_E33"><span class="item-title">E.33 Trading Platforms name:</span> <ix:nonNumeric name="mica:TradingPlatformsName" contextRef="_ctx1" id="Template_E33_ctx1" escape="false" xml:lang="en">kraken, okx, bitpanda, bitvavo, revolut</ix:nonNumeric></div>
+<div class="item-entry" id="Template_E34"><span class="item-title">E.34 Trading Platforms Market Identifier Code (MIC):</span> <ix:nonNumeric name="mica:TradingPlatformsIdentifierCode" contextRef="_ctx1" id="Template_E34_ctx1" escape="false" xml:lang="en">Kraken: PGSL, OKX: None, Bitpanda: None, Bitvavo: VAVO, Revolut: None</ix:nonNumeric></div>
+<div class="item-entry" id="Template_E35"><span class="item-title">E.35 Trading Platforms Access:</span> <ix:nonNumeric name="mica:TradingPlatformsAccessExplanatory" contextRef="_ctx1" id="Template_E35_ctx1" escape="true" xml:lang="en"><p>Investors can access the platforms via their official websites or mobile applications after completing any required registration and KYC procedures.</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_E36"><span class="item-title">E.36 Involved costs:</span> <ix:nonNumeric name="mica:DescriptionOfInvolvedCostsExplanatory" contextRef="_ctx1" id="Template_E36_ctx1" escape="true" xml:lang="en"><p>Standard trading fees apply as set by the trading platform. Infinity Ground does not charge additional access fees.</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_E37"><span class="item-title">E.37 Offer Expenses:</span> <ix:nonNumeric name="mica:DescriptionOfOfferExpensesExplanatory" contextRef="_ctx1" id="Template_E37_ctx1" escape="true" xml:lang="en">N/A</ix:nonNumeric></div>
+<div class="item-entry" id="Template_E38"><span class="item-title">E.38 Conflicts of Interest:</span> <ix:nonNumeric name="mica:InformationAboutPotentialConflictsOfInterestForOtherTokenExplanatory" contextRef="_ctx1" id="Template_E38_ctx1" escape="true" xml:lang="en"><p><strong>Potential conflicts of interest:</strong></p><p>1. Relationship Structure:</p><p>a. All relationships are governed by clear contractual arrangements to ensure independence and transparency</p><p>2. Token Allocations:</p><p>a. Team members and early contributors will receive token allocations</p><p>b. These allocations are subject to predefined vesting schedules and governance rules</p><p>c. All allocations are transparently disclosed in the token distribution section</p><p>3. Governance:</p><p>a. Initial governance decisions are made by the IRYS Foundation</p><p>b. Transition to DAO governance is planned to ensure decentralised decision-making</p><p>c. Clear separation of duties between foundation management and operational teams</p><p>4. Risk Mitigation:</p><p>a. Regular reporting and disclosure requirements</p><p>b. Clear governance framework for decision-making</p><p>All identified potential conflicts are managed through appropriate governance structures and transparency measures to protect token holder interests.</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_E39"><span class="item-title">E.39 Applicable law:</span> <ix:nonNumeric name="mica:ApplicableLawForOtherTokenOfferExplanatory" contextRef="_ctx1" id="Template_E39_ctx1" escape="true" xml:lang="en"><p>Cayman Islands</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_E40"><span class="item-title">E.40 Competent court:</span> <ix:nonNumeric name="mica:CompetentCourtForOtherTokenOfferExplanatory" contextRef="_ctx1" id="Template_E40_ctx1" escape="true" xml:lang="en"><p>Cayman Islands</p></ix:nonNumeric></div>            
+    </div>
+
+    <div class="divider"/>
+
+    <div class="section" id="section-F">
+      <h2 class="section-title">F. Information about Crypto-Assets</h2>
+
+                  <div class="item-entry" id="Template_F1"><span class="item-title">F.1 Crypto-Asset Type:</span> <ix:nonNumeric name="mica:OtherTokenType" contextRef="_ctx1" id="Template_F1_ctx1" escape="false" xml:lang="en"><p>IRYS tokens are considered as crypto-assets other than EMTs and ARTs under Regulation (EU) 2023/1114. IRYS tokens are fungible tokens.</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_F2"><span class="item-title">F.2 Crypto-Asset Functionality:</span> <ix:nonNumeric name="mica:InformationAboutOtherTokenFunctionalityExplanatory" contextRef="_ctx1" id="Template_F2_ctx1" escape="true" xml:lang="en"><p>Irys is a PoW/S hybrid L1 that introduces "Programmable Data". This feature combines a high-performance storage network with native VM execution. This allows users to store data at low costs while accessing it within IrysVM.</p><p>The token is also heavily deflationary, with 95% of storage fees and 50% of transaction fees being burnt. This makes Irys more sustainable.</p><p>Network utilities include the following:</p><p>PoW/S hybrid consensus: a custom consensus protocol that combines traditional Proof-of-Work with staking to provide a cheaper and faster chain.</p><p>Lowest storage costs: at least 10x cheaper than any competitor (e.g. $2.50/TB/month and $2.50/GB permanent data storage) </p><p>IrysVM / Programmable Data: a custom EVM with precompiles that allow smart contracts to read data stored on the chain </p><p>The Irys token specifically has three uses:</p><p><strong>Fees:</strong> Fees are charged on all network operations, including payment for data storage and protocol execution. Unlike other datachains, both temporary and permanent data storage fees are pegged to a USD range and updated on a yearly basis.</p><p><strong>Security: </strong>Token rewards are used to incentivize node validators contributing to Irys consensus and to prevent spam and denial-of-service attacks.</p><p><strong>Staking: </strong>Miners must lock $IRYS tokens as collateral, signaling their commitment to the network and creating clear economic consequences for failing to uphold their responsibilities. Users will also be able to delegate $IRYS tokens in order to passively participate in contributing to the network’s security model.</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_F3"><span class="item-title">F.3 Planned Application of Functionalities:</span> <ix:nonNumeric name="mica:InformationAboutPlannedApplicationOfFunctionalitiesExplanatory" contextRef="_ctx1" id="Template_F3_ctx1" escape="true" xml:lang="en"><p>Immediately</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_F4"><span class="item-title">F.4 Type of white paper:</span> <div style="-ix-hidden:hidden_Template_F4;">OTHR</div></div>
+<div class="item-entry" id="Template_F5"><span class="item-title">F.5 The type of submission:</span> <div style="-ix-hidden:hidden_Template_F5;">NEWT</div></div>
+<div class="item-entry" id="Template_F6"><span class="item-title">F.6 Crypto-Asset Characteristics:</span> <ix:nonNumeric name="mica:DescriptionOfOtherTokenCharacteristicsExplanatory" contextRef="_ctx1" id="Template_F6_ctx1" escape="true" xml:lang="en"><p>The IRYS Token are issued in the form of crypto-assets other than asset reference tokens or e-money tokens pursuant to MiCAR and under the agreed terms and conditions.</p><p><strong>1. Technical Specifications:</strong></p><p>a. Token standard: ERC-20</p><p>b. Blockchain: Transfers occur on the IRYS Layer 1 blockchain.</p><p>c. Total supply: 10 Billion tokens</p><p><strong>2. Core Functionalities / Rights and Obligations:</strong></p><p>a. Obligations: There are no mandatory obligations for token holders. Participation in governance or staking is entirely voluntary and at the discretion of each holder.</p><p>b. Obligations: Fees are charged on all network operations, including payment for data storage and protocol execution. Unlike other datachains, both temporary and permanent data storage fees are pegged to a USD range and updated on a yearly basis.</p><p>c. Obligations: Token rewards are used to incentivize node validators contributing to Irys consensus and to prevent spam and denial-of-service attacks.</p><p><strong>3. Implementation Timeline:</strong></p><p>a. Initial functionality: Ecosystem participation, storage and execution payments, staking to validate the network</p><p>b. Planned upgrades: Delegation, Programmable Data, Extended Storage Terms</p><p>c. Future capabilities: Network optimizations</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_F7"><span class="item-title">F.7 Commercial name or trading name:</span> <ix:nonNumeric name="mica:OtherTokenIssuersCommercialOrTradingName" contextRef="_ctx1" id="Template_F7_ctx1" escape="false" xml:lang="en">IRYS Network</ix:nonNumeric></div>
+<div class="item-entry" id="Template_F8"><span class="item-title">F.8 Website of the issuer:</span> <ix:nonNumeric name="mica:OtherTokenIssuersWebsite" contextRef="_ctx1" id="Template_F8_ctx1" escape="false" xml:lang="en"><a href="https://irys.xyz/">https://irys.xyz/</a></ix:nonNumeric></div>
+<div class="item-entry" id="Template_F9"><span class="item-title">F.9 Starting date of offer to the public or
+admission to trading:</span> <ix:nonNumeric name="mica:OtherTokenOfferStartingDate" contextRef="inst_Template_F9" id="Template_F9_date" format="ixt:dateyearmonthday" escape="false" xml:lang="en">2025-12-25</ix:nonNumeric></div>
+<div class="item-entry" id="Template_F10"><span class="item-title">F.10 Publication date:</span> <ix:nonNumeric name="mica:OtherTokenWhitePaperPublicationDate" contextRef="inst_Template_F10" id="Template_F10_date" format="ixt:dateyearmonthday" escape="false" xml:lang="en">2025-12-25</ix:nonNumeric></div>
+<div class="item-entry" id="Template_F11"><span class="item-title">F.11 Any other services provided by the
+issuer:</span> <ix:nonNumeric name="mica:InformationAboutOtherServicesProvidedByOtherTokenIssuerExplanatory" contextRef="_ctx1" id="Template_F11_ctx1" escape="true" xml:lang="en"><p>N/A</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_F12"><span class="item-title">F.12 Language or languages of the white paper:</span> <ix:nonNumeric name="mica:InformationAboutLanguagesUsedInOtherTokenWhitePaper" contextRef="_ctx1" id="Template_F12_ctx1" escape="false" xml:lang="en">English</ix:nonNumeric></div>
+<div class="item-entry" id="Template_F13 "><span class="item-title">F.13
+ Digital Token Identifier Code used to uniquely identify the crypto-asset or each of the several crypto assets to which the white paper relates, where available:</span> <ix:nonNumeric name="mica:OtherTokenDigitalTokenIdentifierCode" contextRef="_ctx1" id="Template_F13_ctx1" escape="false" xml:lang="en">N/A</ix:nonNumeric></div>
+<div class="item-entry" id="Template_F14"><span class="item-title">F.14 Functionally Fungible Group Digital
+Token Identifier, where available:</span> <ix:nonNumeric name="mica:OtherTokenFunctionallyFungibleGroupDigitalTokenIdentifier" contextRef="_ctx1" id="Template_F14_ctx1" escape="false" xml:lang="en">N/A</ix:nonNumeric></div>
+<div class="item-entry" id="Template_F15"><span class="item-title">F.15 Voluntary data flag:</span> <ix:nonNumeric name="mica:OtherTokenVoluntaryDataFlagIndicator" contextRef="_ctx1" id="Template_F15_fact" escape="false" xml:lang="en">true</ix:nonNumeric></div>
+<div class="item-entry" id="Template_F16"><span class="item-title">F.16 Personal data flag:</span> <ix:nonNumeric name="mica:OtherTokenPersonalDataFlagIndicator" contextRef="_ctx1" id="Template_F16_fact" escape="false" xml:lang="en">true</ix:nonNumeric></div>
+<div class="item-entry" id="Template_F17"><span class="item-title">F.17 LEI eligibility:</span> <ix:nonNumeric name="mica:LEIEligibilityIndicatorForOtherToken" contextRef="_ctx1" id="Template_F17_fact" escape="false" xml:lang="en">true</ix:nonNumeric></div>
+<div class="item-entry" id="Template_F18"><span class="item-title">F.18 Home Member State:</span> <div style="-ix-hidden:hidden_Template_F18;">NL</div></div>
+<div class="item-entry" id="Template_F19"><span class="item-title">F.19 Host Member States:</span> <div style="-ix-hidden:hidden_Template_F19_set;">AT, BE, BG, CY, CZ, DE, DK, EE, ES, FI, FR, GR, HR, HU, IE, IS, IT, LI, LT, LU, LV, MT, NL, NO, PL, PT, RO, SE, SI, SK</div></div>          
+    </div>
+
+    <div class="divider"/>
+
+    <div class="section" id="section-G">
+      <h2 class="section-title">
+        G. Information on Rights and Obligations Attached to Crypto-Assets
+      </h2>
+
+                    <div class="item-entry" id="Template_G1"><span class="item-title">G.1 Purchaser Rights and Obligations:</span> <ix:nonNumeric name="mica:InformationAboutPurchaserRightsAndObligationsExplanatory" contextRef="_ctx1" id="Template_G1_ctx1" escape="true" xml:lang="en"><p><strong> Rights of Token Holders:</strong></p><p>a. Right to vote on protocol proposals, including:</p><p>i.            Protocol upgrades and technical parameters</p><p>ii.           Treasury fund allocations</p><p>iii.         Network parameter adjustments</p><p>iv.         Ecosystem incentive programs</p><p>b. Voting weight proportional to token holdings</p><p><strong>Obligations:</strong> N/A</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_G2"><span class="item-title">G.2 Exercise of Rights and Obligations:</span> <ix:nonNumeric name="mica:ExerciseOfRightsAndObligationExplanatory" contextRef="_ctx1" id="Template_G2_ctx1" escape="true" xml:lang="en"><p>Governance rights exercised through a website that allows token holders to create and vote on proposals.</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_G3"><span class="item-title">G.3 Conditions for Modifications of Rights and Obligations:</span> <ix:nonNumeric name="mica:InformationAboutConditionsForModificationsOfRightsAndObligationsExplanatory" contextRef="_ctx1" id="Template_G3_ctx1" escape="true" xml:lang="en"><p>50%+1 of the token holders’ votes that participate are needed to propose modifications. The implementation of these modifications needs to be implemented / executed by an independent committee that consists of representatives of the Foundation and token holders. </p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_G4"><span class="item-title">G.4 Future Public Offers:</span> <ix:nonNumeric name="mica:InformationAboutFuturePublicOffersExplanatory" contextRef="_ctx1" id="Template_G4_ctx1" escape="true" xml:lang="en"><p>N/A</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_G5"><span class="item-title">G.5 Number of Issuer's Retained Crypto-Assets:</span> <ix:nonFraction name="mica:NumberOfIssuersRetainedOtherTokens" contextRef="inst_Template_G5" id="Template_G5_fact" decimals="0" scale="0" format="ixt4:num-comma-decimal" unitRef="pure" xml:lang="en">111</ix:nonFraction></div>
+<div class="item-entry" id="Template_G6"><span class="item-title">G.6 Utility Token Classification:</span> <ix:nonNumeric name="mica:UtilityTokenClassificationForOtherTokenIndicator" contextRef="_ctx1" id="Template_G6_fact" escape="false" xml:lang="en">false</ix:nonNumeric></div>
+<div class="item-entry" id="Template_G9"><span class="item-title">G.9 Non-Trading Request:</span> <ix:nonNumeric name="mica:NontradingRequestIndicatorRelatedToOtherTokens" contextRef="_ctx1" id="Template_G9_fact" escape="false" xml:lang="en">true</ix:nonNumeric></div>
+<div class="item-entry" id="Template_G11"><span class="item-title">G.11 Crypto-Assets Transfer Restrictions:</span> <ix:nonNumeric name="mica:OtherTokensTransferRestrictionsExplanatory" contextRef="_ctx1" id="Template_G11_ctx1" escape="true" xml:lang="en"><p>Tokens admitted to trading on exchanges. While there are no restrictions on transferability, provided purchasers comply with applicable regulations, trading platforms may impose their own set of restrictions as to who is permitted to buy and sell the token. Such restrictions may vary between platforms based on their internal policies as well as the legal and regulatory requirements of their respective jurisdictions.</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_G12"><span class="item-title">G.12 Supply Adjustment Protocols:</span> <ix:nonNumeric name="mica:SupplyAdjustmentProtocolsIndicator" contextRef="_ctx1" id="Template_G12_fact" escape="false" xml:lang="en">false</ix:nonNumeric></div>
+<div class="item-entry" id="Template_G13"><span class="item-title">G.13 Supply Adjustment Mechanisms:</span> <ix:nonNumeric name="mica:SupplyAdjustmentMechanismsExplanatory" contextRef="_ctx1" id="Template_G13_ctx1" escape="true" xml:lang="en">N/A</ix:nonNumeric></div>
+<div class="item-entry" id="Template_G14"><span class="item-title">G.14 Token Value Protection Schemes:</span> <ix:nonNumeric name="mica:OtherTokenValueProtectionSchemesIndicator" contextRef="_ctx1" id="Template_G14_fact" escape="false" xml:lang="en">false</ix:nonNumeric></div>
+<div class="item-entry" id="Template_G16"><span class="item-title">G.16 Compensation Schemes:</span> <ix:nonNumeric name="mica:OtherTokenCompensationSchemesIndicator" contextRef="_ctx1" id="Template_G16_fact" escape="false" xml:lang="en">false</ix:nonNumeric></div>
+<div class="item-entry" id="Template_G18"><span class="item-title">G.18 Applicable Law:</span> <ix:nonNumeric name="mica:ApplicableLawForOtherTokenExplanatory" contextRef="_ctx1" id="Template_G18_ctx1" escape="true" xml:lang="en"><p>Cayman Islands</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_G19"><span class="item-title">G.19 Competent Court:</span> <ix:nonNumeric name="mica:CompetentCourtForOtherTokenExplanatory" contextRef="_ctx1" id="Template_G19_ctx1" escape="true" xml:lang="en"><p>Cayman Islands</p></ix:nonNumeric></div>        
+    </div>
+
+    <div class="divider"/>
+
+    <div class="section" id="section-H">
+      <h2 class="section-title">H. Information on Underlying Technology</h2>
+
+                      <div class="item-entry" id="Template_H1"><span class="item-title">H.1 Distributed Ledger Technology:</span> <ix:nonNumeric name="mica:DistributedLedgerTechnologyForOtherTokenExplanatory" contextRef="_ctx1" id="Template_H1_ctx1" escape="true" xml:lang="en"><p>Irys operates as a Layer-1 “datachain” that unifies decentralized storage, data availability, and smart-contract execution within a single distributed ledger. The network is secured by a hybrid Proof-of-Work and Stake (PoW/S) consensus mechanism that integrates continual, verifiable proofs of storage directly into block production. The ledger uses a multi-ledger architecture, where data is stored across separate retention-based ledgers and 22TB partitions, allowing flexible durations such as short-term, long-term, or permanent storage. Execution is supported through IrysVM, an EVM-compatible environment extended with native data-access capabilities so that smart contracts can deterministically read and compute over on-chain data. Together, these components form a vertically integrated DLT that records transactions, proves data availability, and supports computation within one coherent, trustless system.</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_H2"><span class="item-title">H.2 Protocols and Technical Standards:</span> <ix:nonNumeric name="mica:ProtocolsAndTechnicalStandardsForOtherTokenExplanatory" contextRef="_ctx1" id="Template_H2_ctx1" escape="true" xml:lang="en"><p>The IRYS blockchain is designed as a Layer 1 (L1) protocol.</p><p>Execution environment: IrysVM is EVM-compatible (EVM++) and adds “programmable data” so contracts can read specified chunk ranges via a PD precompile using EIP-2930 access lists.</p><p>Block model: Two block lanes separate data and execution for stable data-tx pricing; headers include evm_block_hash and vdf_limiter_info.</p><p>Storage architecture: Multi-ledger by duration with promotion from submit to permanent; data is organized in 16 TB partitions.</p><p>Data integrity and uniqueness: Ingress proofs are Merkle-root proofs bound to miner address and signature; Matrix Packing VDF-encodes the miner’s address into each 256 KiB chunk to enforce unique replicas.</p><p>Replication requirement (permanent data): Minimum 10 replicas.</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_H3"><span class="item-title">H.3 Technology Used:</span> <ix:nonNumeric name="mica:InformationAboutTechnologyUsedForOtherTokenExplanatory" contextRef="_ctx1" id="Template_H3_ctx1" escape="true" xml:lang="en"><p>VM and toolchain: EVM++ with a precompiled “system” contract to expose chunk ranges to contracts; remains compatible with standard EVM tooling via EIP-2930 access lists. Built using Reth, Async Rust, while the application layer supports Solidity development</p><p>Client SDK and gateway: SDK abstracts range calculation for PD transactions, implemented by the gateway. SDK built using TypeScript and Gateway is implemented in async Rust </p><p>Networking: Gossip/mempool propagates PD transactions and chunks; nodes validate chunks against Merkle roots and can request or unpack chunks as needed. Async Rust used for p2p layer and chunk streams</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_H4"><span class="item-title">H.4 Consensus Mechanism:</span> <ix:nonNumeric name="mica:ConsensusMechanismForOtherTokenExplanatory" contextRef="_ctx1" id="Template_H4_ctx1" escape="true" xml:lang="en"><p>Design: Hybrid Proof-of-Work-and-Stake with slashing to punish malicious behavior and meet reliability/economic requirements.</p><p>Efficient Sampling: VDF ticks every second to seed deterministic reads of 200 MiB per partition; miner publishes a block if solution exceeds network difficulty. Guarantees each partition is fully sampled daily resulting in consistent data verafiability.</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_H5"><span class="item-title">H.5 Incentive Mechanisms and Applicable Fees:</span> <ix:nonNumeric name="mica:IncentiveMechanismsAndApplicableFeesForOtherTokenExplanatory" contextRef="_ctx1" id="Template_H5_ctx1" escape="true" xml:lang="en"><p>Minimum fee: $0.001 to deter spam (paid in $IRYS)</p><p>Term storage fees: At-cost model (real world HDD cost) plus 5% inclusion fee; example calculations provided.</p><p>Permanent storage fees: perm_fee = term_fee + (ingress_fee × 10) + perm_cost; 10 ingress-proof fees apply.</p><p>Fee distribution: 5% of term_fee to block producer at inclusion; 5% of term_fee paid per ingress-proof; perm_fee is prepaid for 200 years × 10 replicas and added to the treasury; refunds if data not uploaded/published.</p><p>Inflation and burns: Block rewards follow an 4% starting inflation that halves every two years; 50% of execution-tx fees are burned; 95% of temporary storage fees are burned; long-term storage fees contribute to an endowment sink.</p><p>Additional miner incentives: Term-ledger payouts at epoch expiry (≈$0.60 per full 16 TB partition) and extra fees to cover re-packing.</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_H6"><span class="item-title">H.6 Use of Distributed Ledger Technology:</span> <ix:nonNumeric name="mica:UseOfDistributedLedgerTechnologyIndicatorForOtherToken" contextRef="_ctx1" id="Template_H6_fact" escape="false" xml:lang="en">true</ix:nonNumeric></div>
+<div class="item-entry" id="Template_H7"><span class="item-title">H.7 DLT Functionality Description:</span> <ix:nonNumeric name="mica:DescriptionOfDLTFunctionalityForOtherTokenExplanatory" contextRef="_ctx1" id="Template_H7_ctx1" escape="true" xml:lang="en"><p>The Irys distributed ledger functions through tight integration of storage, consensus, and execution. Every block contains two parallel lanes: one for data-storage transactions and one for execution transactions. Data submitted to the network is written into the appropriate ledger based on the user’s desired retention period and stored inside 22TB partitions maintained by miners. Before data is accepted, miners must generate ingress proofs (i.e., signed Merkle roots that demonstrate possession of the underlying data) ensuring that the network only stores verifiable replicas.</p><p>Consensus is achieved through a hybrid PoW/S mechanism that continuously validates data availability. A verifiable delay function emits a global randomness seed once per second, and for every partition a miner stores, the seed determines a mandatory 200 MiB sequential read. Miners hash the resulting chunks and attempt to meet the current difficulty target; a valid solution, combined with sufficient stake, grants block-production rights. Because every partition is sampled once per day through this process, block production itself serves as an ongoing proof-of-storage, with slashing applied for miners who fail to store or serve data.</p><p>Execution occurs through IrysVM, which extends the Ethereum Virtual Machine with precompiled functions that stream on-chain data directly into smart-contract logic. Nodes must first retrieve and validate the relevant data chunks through the network’s gossip layer before including a programmable-data transaction in a block. Finality is probabilistic, similar to traditional PoW networks, with future upgrades targeting BFT-based PoW for single-slot finality. Through this integrated architecture, the Irys DLT simultaneously provides verifiable storage, reliable data availability, and deterministic smart-contract execution within a single ledger.Detailed description of DLT</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_H8"><span class="item-title">H.8 Audit:</span> <ix:nonNumeric name="mica:AuditIndicatorForOtherToken" contextRef="_ctx1" id="Template_H8_fact" escape="false" xml:lang="en">true</ix:nonNumeric></div>
+<div class="item-entry" id="Template_H9"><span class="item-title">H.9 Audit Outcome:</span> <ix:nonNumeric name="mica:AuditOutcomeForOtherTokenExplanatory" contextRef="_ctx1" id="Template_H9_ctx1" escape="true" xml:lang="en"><p>An extensive independent security review of the Irys mainnet implementation was conducted in 2H 2025, covering the full consensus, storage, networking, and execution subsystems. The auditors identified a set of high, medium, and low-severity findings, all of which were formally acknowledged, addressed, and incorporated into the final audited codebase (commit c5aeab259213f1125cea1a6c0a6582f8450610e1). The remediation process involved implementing the recommended fixes, adding missing validation paths, strengthening error-handling, hardening Merkle and PoA verification logic, improving consensus safeguards, correcting boundary and offset checks, enforcing chain-specific protections, and tightening signature validation across all ingress and commitment transactions.</p><p>Following these remediations, the auditors confirmed that each issue had been fully resolved or, where appropriate, explicitly reviewed and accepted with documented rationale. No high, medium, or low-severity findings remained unaddressed at the conclusion of the process, and the final code passed all audit verification steps and regression tests. The outcome of the audit is that the Irys mainnet software meets the expected security, correctness, and stability requirements for launch, with all previously identified risks remediated, validated, and retested in accordance with the audit recommendations.</p></ix:nonNumeric></div>      
+    </div>
+
+    <div class="divider"/>
+
+    <div class="section" id="section-I">
+      <h2 class="section-title">I. Information on Risks</h2>
+
+                        <div class="item-entry" id="Template_I1"><span class="item-title">I.1 Offer-Related Risks:</span> <ix:nonNumeric name="mica:DescriptionOfOfferrelatedRisksForOtherTokenExplanatory" contextRef="_ctx1" id="Template_I1_ctx1" escape="true" xml:lang="en"><p>The person seeking admission to trading does not control, operate, or oversee the trading platforms on which the IRYS token may be admitted. While not exhaustive, the following outlines key risks associated with the token’s admission to trading:</p><p><strong>Market Integrity Risks: </strong>Newly listed tokens often experience significant price volatility and limited liquidity, making them more susceptible to speculative trading and market manipulation. Without robust market surveillance mechanisms in place, practices such as wash trading, spoofing, and pump-and-dump schemes can occur. There is also a risk of insider trading if individuals exploit material non-public information before or during the listing process.</p><p><strong>Trading Platform Dependencies and Risks: </strong>Relying on third-party trading platforms introduces counterparty risks, including the potential for platform insolvency, technical malfunctions, security breaches, or other operational issues that may disrupt token access or trading. Additionally, platform-specific rules, fee models, or technical constraints can limit token usability or result in higher costs for users. Low trading volumes may lead to delisting decisions, which can severely affect a token’s liquidity and market reach.</p><p><strong>Regulatory &amp; Compliance Uncertainties: </strong>The regulatory environment for token trading continues evolving, posing ongoing compliance challenges. Jurisdictions may introduce new restrictions or licensing requirements that affect a token’s tradability or legal status. As regulatory scrutiny increases, trading platforms may be compelled to delist tokens that fall short of emerging compliance standards.</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_I2"><span class="item-title">I.2 Issuer-Related Risks:</span> <ix:nonNumeric name="mica:DescriptionOfIssuerrelatedRisksForOtherTokenExplanatory" contextRef="_ctx1" id="Template_I2_ctx1" escape="true" xml:lang="en"><p>N/A</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_I3"><span class="item-title">I.3 Crypto-Assets-Related Risks:</span> <ix:nonNumeric name="mica:OtherTokensrelatedRisksExplanatory" contextRef="_ctx1" id="Template_I3_ctx1" escape="true" xml:lang="en"><p><strong>Concentration Risk: </strong>Concentration risk refers to the potential for loss resulting from an excessive allocation of investment capital in a single asset or a group of closely related assets.</p><p><strong>Counterparty Risk: </strong>In cases where crypto-assets are used in contractual agreements or held on exchanges, there is a risk that the counterparty may fail to fulfill their obligations due to insolvency, compliance issues, or fraud, resulting in loss of crypto-assets.</p><p><strong>Custodial Risk: </strong>Risks associated with the theft of crypto-assets from exchanges or wallets, loss of private keys, or failure of custodial services, which can result in the irreversible loss of crypto-assets.</p><p><strong>Liquidity Risk: </strong>Some crypto-assets may suffer from low liquidity, making it difficult to buy or sell large amounts without affecting the market price, which could lead to significant losses, especially in fast-moving market conditions.</p><p><strong>Market integrity risk: </strong>A crypto-asset’s standing in the market could be negatively impacted by associations with illicit activities, high-profile hacks, or severe technical failures, which would undermine user trust and reduce market value.</p><p><strong>Market Risk:</strong> Crypto-assets are notoriously volatile, with prices subject to significant fluctuations due to market sentiment, regulatory news, technological advancements, and macroeconomic factors.</p><p><strong>Regulatory and Tax Risk: </strong>Changes in the regulatory environment for crypto-assets (such as consumer protection, taxation, and anti-money laundering requirements) could affect the use, value, or legality of crypto-assets in a given jurisdiction.</p><p><strong>Reputational Risk: </strong>Association with illicit activities, high-profile thefts, or technological failures can damage the reputation of certain crypto-assets, impacting user trust and market value.</p><p><strong>Risk of Exchange Failure: </strong>The risk of exchange failure refers to the possibility that the exchange may experience temporary or permanent outages. Such a failure could impair the tradability of crypto-assets issued by the issuer.</p><p><strong>Sector-Specific Risks: </strong>Sector-specific risks are inherent to a particular industry or sector. These risks may arise from changes in the macroeconomic environment, a decline in demand within the sector where the issuer operates, or dependencies on other sectors.</p><p><strong>Smart Contract Risk: </strong>Crypto-assets might be connected to or be issued with the help of smart contracts. Smart contracts are code running on a blockchain, executing the programmed functions automatically if the defined conditions are fulfilled. Bugs or vulnerabilities in smart contract code can expose blockchain users to potential hacks and exploits. Any flaw in the code can lead to unintended consequences, such as the loss of crypto-assets or unauthorised access to sensitive data.</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_I4"><span class="item-title">I.4 Project Implementation-Related Risks:</span> <ix:nonNumeric name="mica:ProjectImplementationrelatedRisksExplanatory" contextRef="_ctx1" id="Template_I4_ctx1" escape="true" xml:lang="en"><p><strong>Team Dependency Risk: </strong>The success of the network relies on the competence, expertise, and commitment of its development team. Unexpected departures or the loss of key personnel could hinder project progress, innovation, and continuity.</p><p><strong>Resource Management Risk: </strong>Mismanagement of governance funds or development resources could delay milestones, hinder ecosystem growth, and jeopardise the project’s long-term sustainability.</p><p><strong>Competitive Pressure Risk:</strong> Competing blockchain platforms or protocols may challenge the network’s market position, reducing adoption rates and threatening its overall competitiveness.</p><p><strong>Issuer Key Mismanagement Risk:</strong> Mismanagement of the issuer's keys, resulting in the loss of crypto-assets, could jeopardise the funding and development of the protocol, threatening its progress and sustainability.</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_I5"><span class="item-title">I.5 Technology-Related Risks:</span> <ix:nonNumeric name="mica:DescriptionOfTechnologyrelatedRisksForOtherTokenExplanatory" contextRef="_ctx1" id="Template_I5_ctx1" escape="true" xml:lang="en"><p><strong>Anonymity and Privacy Risk: </strong>The inherent transparency and immutability of blockchain technology can pose risks to user anonymity and privacy. Since all transactions are recorded on a public ledger, there is potential for sensitive data to be exposed. The possibility for the public to link certain transactions to a specific address might expose it to phishing attacks, fraud, or other malicious activities.</p><p><strong>Bugs in the Blockchain’s Core Code:</strong> Even with thorough testing, there is always a risk that unknown bugs may exist in a blockchain protocol, which could be exploited to disrupt network operations or manipulate account balances. Continuous code review, audit trails, and having a bug bounty program are essential to identify and rectify such vulnerabilities promptly.</p><p><strong>Consensus Failures or Forks: </strong>Faults in the consensus mechanism can lead to forks, where multiple versions of the ledger coexist, or network halts, potentially destabilising the network and reducing trust among participants.</p><p><strong>Data Corruption:</strong> Corruption of blockchain data, whether through software bugs, human error, or malicious tampering, can undermine the reliability and accuracy of the system.</p><p><strong>Dependency on Underlying Technology: </strong>Blockchain technology relies on underlying infrastructures, such as specific hardware or network connectivity, which may themselves be vulnerable to attacks, outages, or other interferences.</p><p><strong>Economic Self-sufficiency and Operational Parameters: </strong>A blockchain network might not reach the critical mass in transaction volume necessary to sustain self-sufficiency and remain economically viable to incentivise block production. In failing to achieve such inflection point, a network might lose its relevance, become insecure, or result in changes to the protocol’s operational parameters, such as the monetary policy, fee structure and consensus rewards, governance model, or technical specifications such as block size or intervals.</p><p><strong>Governance Risk: </strong>Governance in blockchain technology encompasses the mechanisms for making decisions about network changes and protocol upgrades. Faulty governance models can lead to ineffective decision-making, slow responses to issues, and potential network forks, undermining stability and integrity. Moreover, there is a risk of disproportionate influence by a group of stakeholders, leading to centralised power and decisions that may not align with the broader public’s interests.</p><p><strong>Governance Weakness Risk: </strong>Ineffective governance processes can result in decision-making gridlock, contentious network forks, or disproportionate influence by small stakeholder groups, undermining decentralisation and trust.</p><p><strong>Infrastructure Dependency Risk: </strong>The project’s reliance on stable hardware and network connectivity introduces risks of outages or disruptions, potentially halting transactions and preventing access to funds.</p><p><strong>Network Attacks and Cyber Security Risks: </strong>Blockchain networks can be vulnerable to a variety of cyber-attacks, including 51% attacks, where an attacker gains control of the majority of the network's consensus, Sybil attacks, or DDoS attacks. These can disrupt the network’s operations and compromise data integrity, affecting its security and reliability.</p><p><strong>Private Key Management Risk and Loss of Access to Crypto-Assets: </strong>The security of crypto-assets heavily relies on the management of private keys, which are used to access and control the crypto-assets (e.g. initiate transactions). Poor management practices, loss, or theft of private keys, or respective credentials, can lead to irreversible loss of access to crypto-assets.</p><p><strong>Risk of Technological Disruption: </strong>Technological advancements or the emergence of new technology could impact blockchain systems, or components used in it, by making them insecure or obsolete (e.g. quantum computing breaking encryption paradigms). This could lead to theft or loss of crypto-assets or compromise data integrity on the network.</p><p><strong>Scaling Limitations and Transaction Fees: </strong>As the number of users and transactions grows, a blockchain network may face scaling challenges. This could lead to increased transaction fees and slower transaction processing times, affecting usability and costs.</p><p><strong>Settlement and Transaction Finality: </strong>By design, a blockchain’s settlement is probabilistic, meaning there is no absolute guaranteed finality for a transaction. There remains a theoretical risk that a transaction could be reversed, or concurring versions of the ledger could persist due to exceptional circumstances such as forks or consensus errors. The risk diminishes as more blocks are added, making it increasingly secure over time. Under normal circumstances, however, once a transaction is confirmed, it cannot be reversed or cancelled. Crypto-assets sent to a wrong address cannot be retrieved, resulting in the loss of the sent crypto assets.</p><p><strong>Smart Contract Security Risk:</strong> Smart contracts are code running on a blockchain, executing the programmed functions automatically if the defined conditions are fulfilled. Bugs or vulnerabilities in smart contract code can expose blockchain networks to potential hacks and exploits. Any flaw in the code can lead to unintended consequences, such as the loss of crypto-assets or unauthorized access to sensitive data.</p><p><strong>Third-Party Risks:</strong> Crypto-assets often rely on third-party services such as exchanges and wallet providers for trading and storage. These platforms can be susceptible to security breaches, operational failures, and regulatory non-compliance, which can lead to the loss or theft of crypto-assets.</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_I6"><span class="item-title">I.6 Mitigation Measures:</span> <ix:nonNumeric name="mica:MitigationMeasuresForTechnologyRiskForOtherTokenExplanatory" contextRef="_ctx1" id="Template_I6_ctx1" escape="true" xml:lang="en"><p><strong>Bug bounty program:</strong> A robust bug bounty program is in place to incentivise identification and resolution of vulnerabilities.</p><p><strong>Continuous monitoring and audits: </strong>Continuous monitoring and independent security audits ensure ongoing evaluation of the network's integrity.</p><p><strong>Reliable infrastructure: </strong>Reliable infrastructure providers and fallback mechanisms are incorporated to address potential disruptions.</p><p><strong>Clear governance frameworks:</strong> Clear governance frameworks are established to promote decentralised, transparent decision-making.</p></ix:nonNumeric></div>    
+    </div>
+
+    <div class="divider"/>
+
+    <div class="section" id="section-J">
+      <h2 class="section-title">J. Information on Sustainability Indicators</h2>
+
+                          <div class="item-entry" id="Template_J1"><span class="item-title">J.1 Adverse impacts on climate and other environment-related adverse impacts:</span> <ix:nonNumeric name="mica:InformationOnAdverseImpactsOnClimateAndOtherEnvironmentrelatedAdverseImpactsForOtherTokenTokenExplanatory" contextRef="_ctx1" id="Template_J1_ctx1" escape="true" xml:lang="en"><p>Information referred to in the Annex to Commission Delegated Regulation (EU) 2024/XXX specifying the content, methodologies and presentation of information in respect of sustainability indicators in relation to adverse impacts on the climate and other environment-related adverse impacts.</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_S1"><span class="item-title">S.1 Name:</span> <ix:nonNumeric name="mica:Name" contextRef="_ctx1" id="Template_S1_ctx1" escape="false" xml:lang="en">IRYS Foundation		</ix:nonNumeric></div>
+<div class="item-entry" id="Template_S3"><span class="item-title">S.3 Name of the crypto-asset:</span> <ix:nonNumeric name="mica:NameOfCryptoAssetSustainability" contextRef="_ctx1" id="Template_S3_ctx1" escape="false" xml:lang="en">IRYS</ix:nonNumeric></div>
+<div class="item-entry" id="Template_S4"><span class="item-title">S.4 Consensus mechanism:</span> <ix:nonNumeric name="mica:ConsensusMechanismSustainabilityExplanatory" contextRef="_ctx1" id="Template_S4_ctx1" escape="true" xml:lang="en"><p>Design: Hybrid Proof-of-Work-and-Stake with slashing to punish malicious behavior and meet reliability/economic requirements.</p><p>Efficient Sampling: VDF ticks every second to seed deterministic reads of 200 MiB per partition; miner publishes a block if solution exceeds network difficulty. Guarantees each partition is fully sampled daily resulting in consistent data verafiability.</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_S5"><span class="item-title">S.5 Incentive mechanisms and applicable fees:</span> <ix:nonNumeric name="mica:IncentiveMechanismsAndApplicableFeesSustainabilityExplanatory" contextRef="_ctx1" id="Template_S5_ctx1" escape="true" xml:lang="en"><p>Minimum fee: $0.001 to deter spam (paid in $IRYS)</p><p>Term storage fees: At-cost model (real world HDD cost) plus 5% inclusion fee; example calculations provided.</p><p>Permanent storage fees: perm_fee = term_fee + (ingress_fee × 10) + perm_cost; 10 ingress-proof fees apply.</p><p>Fee distribution: 5% of term_fee to block producer at inclusion; 5% of term_fee paid per ingress-proof; perm_fee is prepaid for 200 years × 10 replicas and added to the treasury; refunds if data not uploaded/published.</p><p>Inflation and burns: Block rewards follow an 4% starting inflation that halves every two years; 50% of execution-tx fees are burned; 95% of temporary storage fees are burned; long-term storage fees contribute to an endowment sink.</p><p>Additional miner incentives: Term-ledger payouts at epoch expiry (≈$0.60 per full 16 TB partition) and extra fees to cover re-packing.</p></ix:nonNumeric></div>
+<div class="item-entry" id="Template_S6"><span class="item-title">S.6 Beginning of the period to which the disclosure relates:</span> <ix:nonNumeric name="mica:BeginningOfPeriodToWhichDisclosedInformationRelates" contextRef="inst_Template_S6" id="Template_S6_date" format="ixt:dateyearmonthday" escape="false" xml:lang="en">2025-11-19</ix:nonNumeric></div>
+<div class="item-entry" id="Template_S7"><span class="item-title">S.7 End of the period to which the disclosure relates:</span> <ix:nonNumeric name="mica:EndOfPeriodToWhichDisclosedInformationRelates" contextRef="inst_Template_S7" id="Template_S7_date" format="ixt:dateyearmonthday" escape="false" xml:lang="en">2025-11-19</ix:nonNumeric></div>
+<div class="item-entry" id="Template_S8"><span class="item-title">S.8 Energy consumption:</span> <ix:nonFraction name="mica:EnergyConsumption" contextRef="_ctx1" id="Template_S8_fact" decimals="2" scale="0" format="ixt4:num-comma-decimal" unitRef="kWh">29434</ix:nonFraction> kWh</div>
+<div class="item-entry" id="Template_S9"><span class="item-title">S.9 Energy consumption sources and methodologies:</span> <ix:nonNumeric name="mica:DescriptionOfEnergyConsumptionSourcesAndMethodologiesExplanatory" contextRef="_ctx1" id="Template_S9_ctx1" escape="true" xml:lang="en"><p>To estimate the energy use associated with the Irys network’s mining and validation operations (as reported in field S.8), we rely on a component-level assessment of typical mining hardware and the operational characteristics of the network’s consensus mechanism.</p><p>Irys employs a hybrid proof-of-work model in which block production is intentionally constrained by hard-disk throughput rather than unbounded computational hashing. As a result, mining does not involve intensive, open-ended compute races. Instead, energy consumption is predominantly driven by storage hardware and the baseline operation of standard server components.</p><p>For estimation purposes, we model a representative mining node using common consumer-grade server equipment with approximately 1 PB of storage capacity, implemented through a 16-drive array of 22 TB HDDs. Power-draw assumptions for each major system component are based on typical manufacturer specifications and industry-standard values for comparable hardware:</p><p><strong>CPU + motherboard + RAM: </strong>~60 W</p><p><strong>HDD array (16 × 22 TB):</strong> ~276 W</p><p><strong>Total estimated continuous load per mining node: </strong>~336 W</p><p>Using a standard annual operating-hour assumption of 8,760 hours/year, the expected yearly energy consumption per node is calculated as:</p><p>336 W × 8,760 h ≈ 2,943.4 kWh per node per year</p><p>The network is initially expected to support 10 miners/validators, each with similar hardware profiles. Therefore, the estimated total annual energy consumption for the validator set is:</p><p>2,943.4 kWh × 10 ≈ 29,434 kWh/year</p><p>This methodology provides a hardware-based, component-level estimate grounded in realistic power-draw characteristics and the operational behavior of Irys’s consensus mechanism.</p></ix:nonNumeric></div>
+
+    </div>
+    <div style="display: none">
+      <ix:header>
+        
+        <ix:hidden>
+           <ix:nonNumeric name="mica:OfferorsRegisteredCountry" contextRef="_ctx1" id="hidden_Template_A3_country" escape="false">https://xbrl.org/2024/iso3166#KY</ix:nonNumeric>  <ix:nonNumeric name="mica:OfferorsHeadOfficeCountry" contextRef="_ctx1" id="hidden_Template_A4_country" escape="false">https://xbrl.org/2024/iso3166#KY</ix:nonNumeric>  <ix:nonNumeric name="mica:TypeOfPersonInvolvedInImplementationOfOtherToken" contextRef="ctx_persons_1" id="persons_1_type_hidden" escape="false" xml:lang="en">
+                https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#OtherPersonInvolvedInImplementation
+            </ix:nonNumeric>  <ix:nonNumeric name="mica:DomicileOfCompanyOfPersonInvolvedInImplementationOfOtherToken" contextRef="ctx_persons_1" id="persons_1_domicile_hidden" escape="false" xml:lang="en">
+                https://xbrl.org/2024/iso3166#KY
+            </ix:nonNumeric>  <ix:nonNumeric name="mica:PublicOfferingOrAdmissionToTrading" contextRef="_ctx1" id="hidden_Template_E1" escape="false" xml:lang="en">https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#AdmissionToTrading</ix:nonNumeric>  <ix:nonNumeric name="mica:TargetedHoldersForOtherToken" contextRef="_ctx1" id="hidden_Template_E13_set" escape="false" xml:lang="en">https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#AllTypesOfInvestors</ix:nonNumeric>  <ix:nonNumeric name="mica:OtherTokenTypeOfWhitePaper" contextRef="_ctx1" id="hidden_Template_F4" escape="false" xml:lang="en">https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#OtherCryptoassetWhitePaper</ix:nonNumeric>  <ix:nonNumeric name="mica:OtherTokenTypeOfSubmission" contextRef="_ctx1" id="hidden_Template_F5" escape="false" xml:lang="en">https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#NewTypeOfSubmission</ix:nonNumeric>  <ix:nonNumeric name="mica:OtherTokenHomeMemberState" contextRef="_ctx1" id="hidden_Template_F18" escape="false" xml:lang="en">https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#NetherlandsMemberState</ix:nonNumeric>  <ix:nonNumeric name="mica:OtherTokenHostMemberStates" contextRef="_ctx1" id="hidden_Template_F19_set" escape="false" xml:lang="en">https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#AustriaMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#BelgiumMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#BulgariaMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#CroatiaMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#CyprusMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#CzechiaMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#DenmarkMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#EstoniaMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#FinlandMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#FranceMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#GermanyMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#GreeceMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#HungaryMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#IcelandMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#IrelandMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#ItalyMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#LatviaMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#LiechtensteinMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#LithuaniaMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#LuxembourgMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#MaltaMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#NetherlandsMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#NorwayMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#PolandMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#PortugalMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#RomaniaMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#SlovakiaMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#SloveniaMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#SpainMemberState https://www.esma.europa.eu/taxonomy/2025-03-31/mica/#SwedenMemberState</ix:nonNumeric> 
+        </ix:hidden>
+        
+        <ix:references xml:lang="en">
+          <link:schemaRef xlink:type="simple" xlink:href="https://www.esma.europa.eu/taxonomy/mica/2025-03-31/mica_entry_table_2.xsd"/>
+        </ix:references>
+        <ix:resources>
+          <xbrli:context id="_ctx1">
+            <xbrli:entity>
+              <xbrli:identifier scheme="http://esma.europa.eu/mica">418269</xbrli:identifier>
+            </xbrli:entity>
+            <xbrli:period>
+              <xbrli:startDate>2025-01-01</xbrli:startDate>
+              <xbrli:endDate>2025-12-31</xbrli:endDate>
+            </xbrli:period>
+          </xbrli:context>
+
+          
+          
+          
+          
+          
+          
+          
+          <xbrli:unit id="pure">
+            <xbrli:measure>xbrli:pure</xbrli:measure>
+          </xbrli:unit>
+          
+
+          
+          <xbrli:unit id="kWh">
+            <xbrli:measure>utr:kWh</xbrli:measure>
+          </xbrli:unit>
+          
+
+          
+          <xbrli:unit id="tCO2e">
+            <xbrli:measure>utr:tCO2e</xbrli:measure>
+          </xbrli:unit>
+          
+
+          
+          <xbrli:unit id="t">
+            <xbrli:measure>utr:t</xbrli:measure>
+          </xbrli:unit>
+          
+
+          
+          <xbrli:unit id="m3">
+            <xbrli:measure>utr:m3</xbrli:measure>
+          </xbrli:unit>
+          
+
+              <xbrli:context id="ctx_mgmt_offeror_1">
+    <xbrli:entity>
+      <xbrli:identifier scheme="http://esma.europa.eu/mica">418269</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:startDate>2025-01-01</xbrli:startDate>
+      <xbrli:endDate>2025-12-31</xbrli:endDate>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:typedMember dimension="mica:LineIdentifierForOfferorsManagementBodyMemberForOtherTokenTypedAxis">
+        <mica:lineIdentifierForOfferorsManagementBodyMemberForOtherToken>1</mica:lineIdentifierForOfferorsManagementBodyMemberForOtherToken>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>    <xbrli:context id="ctx_mgmt_offeror_2">
+    <xbrli:entity>
+      <xbrli:identifier scheme="http://esma.europa.eu/mica">418269</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:startDate>2025-01-01</xbrli:startDate>
+      <xbrli:endDate>2025-12-31</xbrli:endDate>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:typedMember dimension="mica:LineIdentifierForOfferorsManagementBodyMemberForOtherTokenTypedAxis">
+        <mica:lineIdentifierForOfferorsManagementBodyMemberForOtherToken>2</mica:lineIdentifierForOfferorsManagementBodyMemberForOtherToken>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>    <xbrli:context id="ctx_mgmt_offeror_3">
+    <xbrli:entity>
+      <xbrli:identifier scheme="http://esma.europa.eu/mica">418269</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:startDate>2025-01-01</xbrli:startDate>
+      <xbrli:endDate>2025-12-31</xbrli:endDate>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:typedMember dimension="mica:LineIdentifierForOfferorsManagementBodyMemberForOtherTokenTypedAxis">
+        <mica:lineIdentifierForOfferorsManagementBodyMemberForOtherToken>3</mica:lineIdentifierForOfferorsManagementBodyMemberForOtherToken>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>    <xbrli:context id="ctx_persons_1">
+    <xbrli:entity>
+      <xbrli:identifier scheme="http://esma.europa.eu/mica">418269</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:startDate>2025-01-01</xbrli:startDate>
+      <xbrli:endDate>2025-12-31</xbrli:endDate>
+    </xbrli:period>
+    <xbrli:scenario>
+      <xbrldi:typedMember dimension="mica:LineIdentifierForPersonsInvolvedInImplementationOfOtherTokenTypedAxis">
+        <mica:lineIdentifierForPersonsInvolvedInImplementationOfOtherToken>1</mica:lineIdentifierForPersonsInvolvedInImplementationOfOtherToken>
+      </xbrldi:typedMember>
+    </xbrli:scenario>
+  </xbrli:context>    <xbrli:context id="inst_Template_E12">
+    <xbrli:entity>
+      <xbrli:identifier scheme="http://esma.europa.eu/mica">418269</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2025-11-21</xbrli:instant>
+    </xbrli:period>
+  </xbrli:context>    <xbrli:context id="inst_Template_F9">
+    <xbrli:entity>
+      <xbrli:identifier scheme="http://esma.europa.eu/mica">418269</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2025-12-23</xbrli:instant>
+    </xbrli:period>
+  </xbrli:context>    <xbrli:context id="inst_Template_F10">
+    <xbrli:entity>
+      <xbrli:identifier scheme="http://esma.europa.eu/mica">418269</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2025-12-23</xbrli:instant>
+    </xbrli:period>
+  </xbrli:context>    <xbrli:context id="inst_Template_G5">
+    <xbrli:entity>
+      <xbrli:identifier scheme="http://esma.europa.eu/mica">418269</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2025-11-21</xbrli:instant>
+    </xbrli:period>
+  </xbrli:context>    <xbrli:context id="inst_Template_S6">
+    <xbrli:entity>
+      <xbrli:identifier scheme="http://esma.europa.eu/mica">418269</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2025-11-19</xbrli:instant>
+    </xbrli:period>
+  </xbrli:context>    <xbrli:context id="inst_Template_S7">
+    <xbrli:entity>
+      <xbrli:identifier scheme="http://esma.europa.eu/mica">418269</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2025-11-19</xbrli:instant>
+    </xbrli:period>
+  </xbrli:context>    <xbrli:context id="_ctx_inst_notification">
+    <xbrli:entity>
+      <xbrli:identifier scheme="http://esma.europa.eu/mica">418269</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:instant>2025-11-21</xbrli:instant>
+    </xbrli:period>
+  </xbrli:context>  
+        </ix:resources>
+      </ix:header>
+    </div>
+  </body>
+</html>
